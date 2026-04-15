@@ -17,42 +17,57 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Brad Roemer — AI Consultant for Small Businesses | San Diego",
+  title: "0to1 AI — AI guidance for real business owners",
   description:
-    "I help small businesses implement practical AI systems that save time and increase revenue. Strategy sessions, system setup, and ongoing advisory. Based in San Diego.",
+    "Personalized AI coaching for solo operators and freelancers. Learn AI with a guide, not a guru. Weekly curated drops, monthly strategy calls, async support. $295/mo, cancel anytime.",
   openGraph: {
-    title: "Brad Roemer — AI Consultant for Small Businesses",
+    title: "0to1 AI — Learn AI with a guide, not a guru",
     description:
-      "I help small businesses implement practical AI systems that save time and increase revenue. Strategy sessions, system setup, and ongoing advisory.",
-    url: "https://bradroemer.com",
-    siteName: "Brad Roemer AI Consulting",
+      "Personalized AI coaching for solo operators and freelancers. Weekly curated drops, monthly strategy calls, async support. Founded by Brad Roemer.",
+    url: "https://get0to1.ai",
+    siteName: "0to1 AI",
     type: "website",
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Brad Roemer — AI Consultant for Small Businesses",
+    title: "0to1 AI — Learn AI with a guide, not a guru",
     description:
-      "I help small businesses implement practical AI systems that save time and increase revenue.",
+      "Personalized AI coaching for solo operators and freelancers. $295/mo, cancel anytime.",
   },
-  metadataBase: new URL("https://bradroemer.com"),
+  metadataBase: new URL("https://get0to1.ai"),
 };
 
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  name: "Brad Roemer AI Consulting",
-  description: "AI consulting for small businesses",
-  url: "https://bradroemer.com",
-  telephone: "",
-  address: {
-    "@type": "PostalAddress",
-    addressLocality: "San Diego",
-    addressRegion: "CA",
-    addressCountry: "US",
+  "@type": "Service",
+  name: "0to1 AI",
+  description:
+    "Personalized AI coaching service for solo operators and freelancers. Weekly curated drops, monthly strategy calls, async support.",
+  url: "https://get0to1.ai",
+  provider: {
+    "@type": "Person",
+    name: "Brad Roemer",
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "San Diego",
+      addressRegion: "CA",
+      addressCountry: "US",
+    },
   },
-  priceRange: "$750 - $5000",
-  serviceType: "AI Consulting",
+  areaServed: "Worldwide",
+  serviceType: "AI Coaching",
+  offers: {
+    "@type": "Offer",
+    price: "295",
+    priceCurrency: "USD",
+    priceSpecification: {
+      "@type": "UnitPriceSpecification",
+      price: "295",
+      priceCurrency: "USD",
+      referenceQuantity: { "@type": "QuantitativeValue", value: "1", unitCode: "MON" },
+    },
+  },
 };
 
 export default function RootLayout({

@@ -15,29 +15,39 @@ export default function Hero() {
 
           <div className="p-6 sm:p-10 md:p-14">
             <p className="font-mono text-text-dim text-sm md:text-base mb-6">
-              <span className="text-accent-green">~/brad $</span> whoami
+              <span className="text-accent-green">~/0to1 $</span> whoami
             </p>
 
             <h1 className="font-mono text-4xl sm:text-5xl md:text-6xl font-bold text-text-primary mb-2">
-              Brad Roemer
+              0to1 AI
             </h1>
 
             <p className="font-mono text-accent-green text-lg md:text-xl mb-8">
-              AI Consultant
+              AI guidance for real business owners
             </p>
 
             <div className="mb-10">
               <p className="font-sans text-lg sm:text-xl md:text-2xl text-text-primary leading-relaxed">
                 <span className="typing-effect inline-block">
-                  I help small businesses implement AI systems that actually get used.
+                  Learn AI with a guide, not a guru.
                 </span>
                 <BlinkingCursor />
               </p>
+              <p className="font-sans text-text-secondary text-base md:text-lg mt-5 leading-relaxed">
+                Personalized AI coaching for solo operators and freelancers.
+                Built by a business owner who taught himself — not a tech guru
+                on a pedestal.
+              </p>
             </div>
 
-            <Button href="#book" aria-label="Book a strategy session">
-              Book a Strategy Session <span aria-hidden="true">&rarr;</span>
-            </Button>
+            <div className="flex flex-col sm:flex-row gap-3">
+              <Button href="/quiz" aria-label="Take the free AI readiness quiz">
+                Take the Free Quiz <span aria-hidden="true">&rarr;</span>
+              </Button>
+              <Button href="#book" variant="secondary" aria-label="Book a free intro call">
+                Book a Free Intro Call
+              </Button>
+            </div>
           </div>
         </div>
 

@@ -6,19 +6,19 @@ import { useScrollReveal } from "@/components/hooks/useScrollReveal";
 const PROBLEMS = [
   {
     title: "You know AI matters, but you don't know where to start.",
-    desc: "Every tool promises to change your business. None came with instructions.",
+    desc: "Every tool promises to change your business. None came with instructions — and most advice is written for engineers, not operators.",
   },
   {
     title: "You tried ChatGPT. It was cool for a week. Then nothing changed.",
-    desc: "Tools without systems are just toys.",
+    desc: "Tools without a practice don't stick. You need someone pointing you at the right experiment this week, then the next.",
   },
   {
-    title: "You don't have time to figure this out.",
-    desc: "You're running a business. You need someone who already has.",
+    title: "You don't want a done-for-you black box.",
+    desc: "You want to understand what you're building. Teach a person to fish, don't hand them a fish they don't know how to reheat.",
   },
   {
-    title: "Your competitors are pulling ahead and you can feel it.",
-    desc: "The gap between AI-adopters and everyone else is growing fast.",
+    title: "Custom agency builds are $10k+ and generic courses don't fit your business.",
+    desc: "You need something in between — personal, practical, priced for a solo operator, and tailored to what you actually do.",
   },
 ];
 

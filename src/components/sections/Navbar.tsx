@@ -3,10 +3,11 @@
 import { useState, useEffect, useCallback } from "react";
 import { useScrollSpy } from "@/components/hooks/useScrollSpy";
 
-const NAV_ITEMS = [
-  { id: "process", label: "process" },
-  { id: "services", label: "services" },
+const NAV_ITEMS: { id: string; label: string; href?: string }[] = [
+  { id: "process", label: "how it works" },
+  { id: "services", label: "plan" },
   { id: "about", label: "about" },
+  { id: "quiz", label: "quiz", href: "/quiz" },
   { id: "book", label: "book" },
 ];
 
@@ -48,25 +49,35 @@ export default function Navbar() {
           aria-label="Go to top"
         >
           <span className="text-accent-green">~/</span>
-          <span className="text-text-primary">brad</span>
+          <span className="text-text-primary">0to1</span>
         </button>
 
         {/* Desktop nav */}
         <div className="hidden md:flex items-center gap-1">
-          {NAV_ITEMS.map((item) => (
-            <button
-              key={item.id}
-              onClick={() => scrollTo(item.id)}
-              aria-current={activeId === item.id ? "page" : undefined}
-              className={`font-mono text-sm px-3 py-2 rounded transition-colors min-h-[44px] ${
-                activeId === item.id
-                  ? "text-accent-green"
-                  : "text-text-secondary hover:text-text-primary"
-              } ${item.id === "book" ? "text-accent-green hover:shadow-[0_0_10px_rgba(74,222,128,0.2)]" : ""}`}
-            >
-              [{item.label}]
-            </button>
-          ))}
+          {NAV_ITEMS.map((item) =>
+            item.href ? (
+              <a
+                key={item.id}
+                href={item.href!}
+                className={`font-mono text-sm px-3 py-2 rounded transition-colors min-h-[44px] text-accent-amber hover:shadow-[0_0_10px_rgba(251,191,36,0.2)]`}
+              >
+                [{item.label}]
+              </a>
+            ) : (
+              <button
+                key={item.id}
+                onClick={() => scrollTo(item.id)}
+                aria-current={activeId === item.id ? "page" : undefined}
+                className={`font-mono text-sm px-3 py-2 rounded transition-colors min-h-[44px] ${
+                  activeId === item.id
+                    ? "text-accent-green"
+                    : "text-text-secondary hover:text-text-primary"
+                } ${item.id === "book" ? "text-accent-green hover:shadow-[0_0_10px_rgba(74,222,128,0.2)]" : ""}`}
+              >
+                [{item.label}]
+              </button>
+            )
+          )}
         </div>
 
         {/* Mobile hamburger */}
@@ -101,18 +112,28 @@ export default function Navbar() {
           className="md:hidden bg-[#0C0C0C]/95 backdrop-blur-md border-b border-border-terminal"
         >
           <div className="flex flex-col px-6 py-4 gap-2">
-            {NAV_ITEMS.map((item) => (
-              <button
-                key={item.id}
-                onClick={() => scrollTo(item.id)}
-                aria-current={activeId === item.id ? "page" : undefined}
-                className={`font-mono text-base text-left py-3 min-h-[44px] ${
-                  activeId === item.id ? "text-accent-green" : "text-text-secondary"
-                }`}
-              >
-                [{item.label}]
-              </button>
-            ))}
+            {NAV_ITEMS.map((item) =>
+              item.href ? (
+                <a
+                  key={item.id}
+                  href={item.href!}
+                  className="font-mono text-base text-left py-3 min-h-[44px] text-accent-amber"
+                >
+                  [{item.label}]
+                </a>
+              ) : (
+                <button
+                  key={item.id}
+                  onClick={() => scrollTo(item.id)}
+                  aria-current={activeId === item.id ? "page" : undefined}
+                  className={`font-mono text-base text-left py-3 min-h-[44px] ${
+                    activeId === item.id ? "text-accent-green" : "text-text-secondary"
+                  }`}
+                >
+                  [{item.label}]
+                </button>
+              )
+            )}
           </div>
         </div>
       )}
