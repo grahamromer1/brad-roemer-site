@@ -24,7 +24,10 @@ export default function Services() {
   return (
     <section id="services" className="py-20 md:py-32 px-4 sm:px-6" ref={ref}>
       <div className="max-w-5xl mx-auto">
-        <TerminalPrompt command="cat plan.md" />
+        <TerminalPrompt
+          command="cat plan.md"
+          heading="Pricing and what you get"
+        />
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 items-start">
           {/* ── Core Plan (spans 2 cols) ── */}

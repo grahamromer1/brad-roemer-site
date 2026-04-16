@@ -30,13 +30,33 @@ const FAQS: { q: string; a: string }[] = [
   },
 ];
 
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: FAQS.map(({ q, a }) => ({
+    "@type": "Question",
+    name: q,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: a,
+    },
+  })),
+};
+
 export default function FAQ() {
   const ref = useScrollReveal<HTMLElement>();
 
   return (
     <section id="faq" className="py-20 md:py-32 px-4 sm:px-6" ref={ref}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
       <div className="max-w-3xl mx-auto">
-        <TerminalPrompt command="cat faq.md" />
+        <TerminalPrompt
+          command="cat faq.md"
+          heading="Frequently asked questions"
+        />
 
         <div className="space-y-8">
           {FAQS.map((item, i) => (

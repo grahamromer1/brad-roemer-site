@@ -32,7 +32,10 @@ export default function Problem() {
   return (
     <section id="problems" className="py-20 md:py-32 px-4 sm:px-6" ref={ref}>
       <div className="max-w-3xl mx-auto">
-        <TerminalPrompt command="cat problems.md" />
+        <TerminalPrompt
+          command="cat problems.md"
+          heading="Why learning AI on your own is broken"
+        />
 
         <div className="space-y-8">
           {PROBLEMS.map((p, i) => (

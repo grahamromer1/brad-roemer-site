@@ -17,7 +17,10 @@ export default function Proof() {
   return (
     <section id="proof" className="py-20 md:py-32 px-4 sm:px-6" ref={ref}>
       <div className="max-w-2xl mx-auto">
-        <TerminalPrompt command="cat proof.md" />
+        <TerminalPrompt
+          command="cat proof.md"
+          heading="Why you can trust this program"
+        />
 
         <p className="fade-in-up font-mono text-xs text-accent-cyan uppercase tracking-wider mb-6">
           // what this looks like in practice
