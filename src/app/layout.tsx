@@ -2,9 +2,13 @@ import type { Metadata } from "next";
 import { JetBrains_Mono, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 
+// Only ship the weights actually used in the app: regular body text (400),
+// font-semibold (600), and font-bold (700). This trims ~6 weight files per
+// font vs. Next's default "variable" fallback behavior.
 const jetbrainsMono = JetBrains_Mono({
   variable: "--font-jetbrains-mono",
   subsets: ["latin"],
+  weight: ["400", "600", "700"],
   display: "swap",
   adjustFontFallback: true,
 });
@@ -12,6 +16,7 @@ const jetbrainsMono = JetBrains_Mono({
 const plusJakartaSans = Plus_Jakarta_Sans({
   variable: "--font-plus-jakarta-sans",
   subsets: ["latin"],
+  weight: ["400", "600", "700"],
   display: "swap",
   adjustFontFallback: true,
 });
