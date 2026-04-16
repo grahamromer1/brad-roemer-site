@@ -36,6 +36,9 @@ export const metadata: Metadata = {
       "Personal AI guidance for solo operators and freelancers. $295/mo, cancel anytime.",
   },
   metadataBase: new URL("https://get0to1.ai"),
+  alternates: {
+    canonical: "/",
+  },
 };
 
 const jsonLd = {

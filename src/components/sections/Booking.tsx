@@ -1,7 +1,7 @@
 "use client";
 
-import Cal from "@calcom/embed-react";
 import TerminalPrompt from "@/components/ui/TerminalPrompt";
+import LazyCalEmbed from "@/components/ui/LazyCalEmbed";
 import { useScrollReveal } from "@/components/hooks/useScrollReveal";
 
 export default function Booking() {
@@ -29,23 +29,9 @@ export default function Booking() {
             // tip: take the <a href="/quiz" className="text-accent-amber hover:underline">free quiz</a> first so we can make the call count.
           </p>
 
-          <div
-            className="rounded-lg border border-border-terminal overflow-hidden bg-bg-surface"
-            style={{ minHeight: "720px" }}
-          >
-            {/* TODO: Cal.com doesn't natively support hiding times until date
-                selection — may need custom CSS or embed config update */}
-            <Cal
-              namespace="intro-inline"
-              calLink="bradroemer/intro"
-              config={{
-                theme: "dark",
-                layout: "month_view",
-                hideEventTypeDetails: "false",
-              }}
-              style={{ width: "100%", minHeight: "720px", overflow: "auto" }}
-            />
-          </div>
+          {/* TODO: Cal.com doesn't natively support hiding times until date
+              selection — may need custom CSS or embed config update */}
+          <LazyCalEmbed />
 
           <p className="font-mono text-text-dim text-xs mt-2 text-center">
             // all times shown in Pacific Time (PST)

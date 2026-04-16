@@ -39,7 +39,7 @@ export default function Footer() {
           </a>
         </div>
 
-        <p className="font-mono text-text-dim/50 text-xs">// end session</p>
+        <p className="font-mono text-text-dim text-xs">// end session</p>
       </div>
     </footer>
   );
