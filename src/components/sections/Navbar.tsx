@@ -56,11 +56,13 @@ export default function Navbar() {
         <button
           onClick={() => scrollTo("hero")}
           className="font-mono text-sm md:text-base"
-          aria-label="Go to top"
+          aria-label="0to1.AI — back to top"
         >
-          <span className="text-accent-green">~/</span>
-          <span className="text-text-primary">0to1</span>
-          <span className="text-accent-green">.AI</span>
+          <span aria-hidden="true">
+            <span className="text-accent-green">~/</span>
+            <span className="text-text-primary">0to1</span>
+            <span className="text-accent-green">.AI</span>
+          </span>
         </button>
 
         {/* Desktop nav */}
@@ -72,7 +74,9 @@ export default function Navbar() {
                 href={item.href!}
                 className={`inline-flex items-center font-mono text-sm leading-none px-3 py-2 rounded transition-colors min-h-[44px] text-accent-amber hover:shadow-[0_0_10px_rgba(251,191,36,0.2)]`}
               >
-                [{item.label}]
+                <span aria-hidden="true">[</span>
+                {item.label}
+                <span aria-hidden="true">]</span>
               </a>
             ) : (
               <button
@@ -85,7 +89,9 @@ export default function Navbar() {
                     : "text-text-secondary hover:text-text-primary"
                 } ${item.id === "book" ? "text-accent-green hover:shadow-[0_0_10px_rgba(74,222,128,0.2)]" : ""}`}
               >
-                [{item.label}]
+                <span aria-hidden="true">[</span>
+                {item.label}
+                <span aria-hidden="true">]</span>
               </button>
             )
           )}
@@ -130,7 +136,9 @@ export default function Navbar() {
                   href={item.href!}
                   className="font-mono text-base text-left py-3 min-h-[44px] text-accent-amber"
                 >
-                  [{item.label}]
+                  <span aria-hidden="true">[</span>
+                  {item.label}
+                  <span aria-hidden="true">]</span>
                 </a>
               ) : (
                 <button
@@ -141,7 +149,9 @@ export default function Navbar() {
                     activeId === item.id ? "text-accent-green" : "text-text-secondary"
                   }`}
                 >
-                  [{item.label}]
+                  <span aria-hidden="true">[</span>
+                  {item.label}
+                  <span aria-hidden="true">]</span>
                 </button>
               )
             )}
