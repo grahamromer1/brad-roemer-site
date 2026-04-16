@@ -5,7 +5,9 @@ import Problem from "@/components/sections/Problem";
 import Process from "@/components/sections/Process";
 import Services from "@/components/sections/Services";
 import About from "@/components/sections/About";
+import Proof from "@/components/sections/Proof";
 import Booking from "@/components/sections/Booking";
+import FAQ from "@/components/sections/FAQ";
 import Footer from "@/components/sections/Footer";
 
 export default function Home() {
@@ -23,7 +25,11 @@ export default function Home() {
         <SectionDivider />
         <About />
         <SectionDivider />
+        <Proof />
+        <SectionDivider />
         <Booking />
+        <SectionDivider />
+        <FAQ />
       </main>
       <Footer />
     </>

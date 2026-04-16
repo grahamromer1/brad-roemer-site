@@ -203,17 +203,25 @@ export default function QuizFlow() {
 
         <div className="flex-1 flex items-center justify-center px-4 sm:px-6 py-10">
           <div className="w-full max-w-md space-y-6">
-            <div className="text-center space-y-2">
+            <div className="text-center space-y-3">
               <p className="font-mono text-xs text-accent-cyan uppercase tracking-wider">
                 // ~/0to1 $ ./start-quiz
               </p>
               <h1 className="font-mono text-2xl md:text-3xl text-text-primary font-bold">
-                Let&apos;s get started
+                Where do you stand with AI?
               </h1>
+              <p className="font-mono text-xs md:text-sm text-text-dim">
+                5 minutes. 13 questions. No email required.
+              </p>
               <p className="font-sans text-text-secondary text-sm md:text-base leading-relaxed">
-                Five minutes. Thirteen questions. You&apos;ll walk away with a
-                snapshot of where you stand and two high-leverage actions for this
-                week.
+                You&apos;ll get a personalized snapshot of where you are with
+                AI today — what&apos;s working, what&apos;s not, and where the
+                biggest opportunities are for your business and your life.
+                Plus two things you can try this week.
+              </p>
+              <p className="font-mono text-[11px] text-text-dim pt-1">
+                Built by 0to1.AI — personal AI guidance for owners, operators,
+                and freelancers.
               </p>
             </div>
 
@@ -263,7 +271,9 @@ export default function QuizFlow() {
                   className="block font-mono text-sm text-text-secondary mb-1"
                 >
                   <span className="text-accent-cyan">email:</span>{" "}
-                  <span className="text-text-dim">(optional)</span>
+                  <span className="text-text-dim">
+                    (optional — only if you want your results sent to you)
+                  </span>
                 </label>
                 <input
                   id="intro-email"
@@ -274,9 +284,6 @@ export default function QuizFlow() {
                   className="w-full bg-bg-primary border border-border-terminal rounded px-3 py-2 font-mono text-text-primary focus:border-accent-green outline-none"
                   placeholder="jane@example.com"
                 />
-                <p className="font-mono text-[11px] text-text-dim mt-1">
-                  // add your email to get your results sent to your inbox
-                </p>
               </div>
 
               <button

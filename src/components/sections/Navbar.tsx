@@ -9,9 +9,19 @@ const NAV_ITEMS: { id: string; label: string; href?: string }[] = [
   { id: "about", label: "about" },
   { id: "quiz", label: "quiz", href: "/quiz" },
   { id: "book", label: "book" },
+  { id: "faq", label: "faq" },
 ];
 
-const SECTION_IDS = ["hero", "problems", "process", "services", "about", "book"];
+const SECTION_IDS = [
+  "hero",
+  "problems",
+  "process",
+  "services",
+  "about",
+  "proof",
+  "book",
+  "faq",
+];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -50,6 +60,7 @@ export default function Navbar() {
         >
           <span className="text-accent-green">~/</span>
           <span className="text-text-primary">0to1</span>
+          <span className="text-accent-green">.AI</span>
         </button>
 
         {/* Desktop nav */}
@@ -59,7 +70,7 @@ export default function Navbar() {
               <a
                 key={item.id}
                 href={item.href!}
-                className={`font-mono text-sm px-3 py-2 rounded transition-colors min-h-[44px] text-accent-amber hover:shadow-[0_0_10px_rgba(251,191,36,0.2)]`}
+                className={`inline-flex items-center font-mono text-sm leading-none px-3 py-2 rounded transition-colors min-h-[44px] text-accent-amber hover:shadow-[0_0_10px_rgba(251,191,36,0.2)]`}
               >
                 [{item.label}]
               </a>
@@ -68,7 +79,7 @@ export default function Navbar() {
                 key={item.id}
                 onClick={() => scrollTo(item.id)}
                 aria-current={activeId === item.id ? "page" : undefined}
-                className={`font-mono text-sm px-3 py-2 rounded transition-colors min-h-[44px] ${
+                className={`inline-flex items-center font-mono text-sm leading-none px-3 py-2 rounded transition-colors min-h-[44px] ${
                   activeId === item.id
                     ? "text-accent-green"
                     : "text-text-secondary hover:text-text-primary"

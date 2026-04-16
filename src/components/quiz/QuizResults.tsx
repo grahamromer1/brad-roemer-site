@@ -228,9 +228,9 @@ export default function QuizResults({
           <p className="font-sans text-text-secondary text-sm md:text-base leading-relaxed">
             You&apos;re a{" "}
             <span className="text-accent-green font-semibold">{typeLabel}</span>.
-            0to1 AI is a month-to-month coaching plan built to take you from
-            here to confidently applying AI to your business — one curated
-            weekly drop, one monthly call, one real skill at a time.
+            0to1.AI is a month-to-month program built to take you from here
+            to confidently applying AI to your business — one curated weekly
+            drop, one monthly call, one real skill at a time.
           </p>
           <p className="font-sans text-text-primary text-sm md:text-base leading-relaxed">
             Start with a{" "}

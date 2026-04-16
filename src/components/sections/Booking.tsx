@@ -17,9 +17,13 @@ export default function Booking() {
             Book a free intro call
           </h3>
           <p className="font-sans text-text-secondary text-base md:text-lg leading-relaxed mb-4 text-center">
-            15 minutes. No pressure. We&apos;ll walk through where you are,
-            where you want to go, and whether 0to1 AI is the right fit. You&apos;ll
-            leave with at least one concrete next step either way.
+            15 minutes. No pitch, no pressure. We&apos;ll look at where you are
+            with AI right now, what&apos;s most relevant to your business and
+            your life, and whether 0to1.AI is the right fit.
+          </p>
+          <p className="font-sans text-text-secondary text-base md:text-lg leading-relaxed mb-4 text-center">
+            You&apos;ll leave with a concrete next step either way — even if
+            you don&apos;t sign up.
           </p>
           <p className="font-mono text-xs text-text-dim text-center mb-8">
             // tip: take the <a href="/quiz" className="text-accent-amber hover:underline">free quiz</a> first so we can make the call count.
@@ -29,13 +33,23 @@ export default function Booking() {
             className="rounded-lg border border-border-terminal overflow-hidden bg-bg-surface"
             style={{ minHeight: "720px" }}
           >
+            {/* TODO: Cal.com doesn't natively support hiding times until date
+                selection — may need custom CSS or embed config update */}
             <Cal
               namespace="intro-inline"
               calLink="bradroemer/intro"
-              config={{ theme: "dark", layout: "month_view" }}
+              config={{
+                theme: "dark",
+                layout: "month_view",
+                hideEventTypeDetails: "false",
+              }}
               style={{ width: "100%", minHeight: "720px", overflow: "auto" }}
             />
           </div>
+
+          <p className="font-mono text-text-dim text-xs mt-2 text-center">
+            // all times shown in Pacific Time (PST)
+          </p>
 
           <p className="font-mono text-text-dim text-sm mt-6 text-center">
             // or email directly:{" "}

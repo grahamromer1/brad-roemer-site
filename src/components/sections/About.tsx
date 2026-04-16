@@ -5,9 +5,11 @@ import { useScrollReveal } from "@/components/hooks/useScrollReveal";
 
 const META = [
   { key: "founder", value: "Brad Roemer" },
-  { key: "background", value: "business operator, not a tech person" },
+  { key: "background", value: "sole proprietor, real estate developer" },
+  { key: "education", value: "USC \u00b7 Columbia University" },
+  { key: "built", value: "AI agents, automated workflows, a new AI business" },
   { key: "based", value: "North County, San Diego" },
-  { key: "serving", value: "solo operators + freelancers, anywhere" },
+  { key: "serving", value: "owners, operators, freelancers \u2014 anywhere" },
 ];
 
 export default function About() {
@@ -20,29 +22,39 @@ export default function About() {
 
         <div className="fade-in-up font-sans text-text-secondary text-base md:text-lg leading-relaxed space-y-5 mb-10">
           <p>
-            0to1 AI was started by <span className="text-text-primary font-semibold">Brad Roemer</span> —
-            an entrepreneur, investor, and real estate developer who, like most of
-            you, woke up one day realizing AI was going to change everything and
-            had no idea where to start.
+            I&apos;m <span className="text-text-primary font-semibold">Brad</span>.
           </p>
           <p>
-            I&apos;m not a computer scientist. I don&apos;t have an engineering
-            degree. I&apos;m a business operator who spent the last couple years
-            going deep on AI the hard way — trying tools, breaking things,
-            figuring out what actually moves the needle for a small business
-            versus what&apos;s just hype.
+            I don&apos;t have a technical background. I&apos;m not an engineer.
+            I&apos;m a sole proprietor and real estate developer who knew AI was
+            going to change everything — and couldn&apos;t find a good place to
+            start learning it. YouTube videos, online courses, free tools,
+            Reddit threads. Months of experimenting — all one-off, none of it
+            directed, none of it building toward anything.
           </p>
           <p>
-            What I learned: most AI content is written by tech people for tech
-            people. Everyone else is left Googling, spinning their wheels, and
-            eventually giving up. The gap isn&apos;t the technology — it&apos;s the{" "}
-            <span className="text-accent-green">translation</span>.
+            Then I built myself a plan. Mapped out what to learn, in what order,
+            and something clicked. I spun up an AI agent team with OpenClaw.
+            Learned to build with Claude Code. Created workflows that now run
+            parts of my own business. Started a new AI company. Each week the
+            skills compounded on the last — and I got obsessed. I also
+            realized how much time it takes to stay on top of a space that
+            evolves every
+            single week.
           </p>
           <p>
-            0to1 AI is the guide I wish I&apos;d had: practical, personalized,
-            no-BS. I&apos;ll never hand you a black box. I&apos;ll teach you how
-            to fish — meet you where you are, walk alongside you, and leave you
-            with real skills you own for life.
+            What I found: the gap isn&apos;t the technology — it&apos;s the{" "}
+            <span className="text-accent-green">translation</span>. Most of
+            what&apos;s out there is written by tech people for tech people.
+            Everyone else is left spinning their wheels.
+          </p>
+          <p>
+            That&apos;s why I built 0to1.AI. Not a course. Not an agency. A
+            personalized program that meets you where you are — week by week,
+            tailored to your business and your life. Until AI isn&apos;t
+            something you&apos;re &ldquo;meaning to figure out&rdquo; anymore.
+            It&apos;s how you learn. How you find opportunities. How you
+            operate.
           </p>
         </div>
 

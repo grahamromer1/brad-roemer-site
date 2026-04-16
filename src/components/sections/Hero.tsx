@@ -19,24 +19,32 @@ export default function Hero() {
             </p>
 
             <h1 className="font-mono text-4xl sm:text-5xl md:text-6xl font-bold text-text-primary mb-2">
-              0to1 AI
+              <span className="block">AI-curious to</span>
+              <span className="block">AI-fluent.</span>
             </h1>
 
             <p className="font-mono text-accent-green text-lg md:text-xl mb-8">
-              AI guidance for real business owners
+              <span className="typing-effect inline-block">
+                Learn AI with a guide, not a guru.
+              </span>
+              <BlinkingCursor />
             </p>
 
             <div className="mb-10">
-              <p className="font-sans text-lg sm:text-xl md:text-2xl text-text-primary leading-relaxed">
-                <span className="typing-effect inline-block">
-                  Learn AI with a guide, not a guru.
-                </span>
-                <BlinkingCursor />
+              <p className="font-sans text-lg sm:text-xl md:text-2xl text-text-primary leading-relaxed mb-5">
+                You knew you needed to figure out AI. You just didn&apos;t know
+                where to start &mdash; and most of what&apos;s out there is built
+                for engineers, not people running a business.
               </p>
-              <p className="font-sans text-text-secondary text-base md:text-lg mt-5 leading-relaxed">
-                Personalized AI coaching for solo operators and freelancers.
-                Built by a business owner who taught himself — not a tech guru
-                on a pedestal.
+              <p className="font-sans text-text-secondary text-base md:text-lg leading-relaxed">
+                0to1.AI is personal AI guidance for your business and your
+                life. Each week you learn what to focus on next, a monthly
+                call to talk through what&apos;s working, and a community of
+                operators learning alongside you. A compounding knowledge base
+                that builds week over week.
+              </p>
+              <p className="font-sans text-text-secondary text-sm md:text-base mt-4 leading-relaxed">
+                Built by a self-taught operator who figured it out the hard way.
               </p>
             </div>
 

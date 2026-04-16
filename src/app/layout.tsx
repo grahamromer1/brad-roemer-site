@@ -17,23 +17,23 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "0to1 AI — AI guidance for real business owners",
+  title: "0to1.AI — AI guidance for real business owners",
   description:
-    "Personalized AI coaching for solo operators and freelancers. Learn AI with a guide, not a guru. Weekly curated drops, monthly strategy calls, async support. $295/mo, cancel anytime.",
+    "Personal AI guidance for solo operators and freelancers. Learn AI with a guide, not a guru. Weekly curated drops, monthly strategy calls, async support. $295/mo, cancel anytime.",
   openGraph: {
-    title: "0to1 AI — Learn AI with a guide, not a guru",
+    title: "0to1.AI — Learn AI with a guide, not a guru",
     description:
-      "Personalized AI coaching for solo operators and freelancers. Weekly curated drops, monthly strategy calls, async support. Founded by Brad Roemer.",
+      "Personal AI guidance for solo operators and freelancers. Weekly curated drops, monthly strategy calls, async support. Founded by Brad Roemer.",
     url: "https://get0to1.ai",
-    siteName: "0to1 AI",
+    siteName: "0to1.AI",
     type: "website",
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: "0to1 AI — Learn AI with a guide, not a guru",
+    title: "0to1.AI — Learn AI with a guide, not a guru",
     description:
-      "Personalized AI coaching for solo operators and freelancers. $295/mo, cancel anytime.",
+      "Personal AI guidance for solo operators and freelancers. $295/mo, cancel anytime.",
   },
   metadataBase: new URL("https://get0to1.ai"),
 };
@@ -41,9 +41,9 @@ export const metadata: Metadata = {
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Service",
-  name: "0to1 AI",
+  name: "0to1.AI",
   description:
-    "Personalized AI coaching service for solo operators and freelancers. Weekly curated drops, monthly strategy calls, async support.",
+    "Personal AI guidance program for solo operators and freelancers. Weekly curated drops, monthly strategy calls, async support.",
   url: "https://get0to1.ai",
   provider: {
     "@type": "Person",
@@ -56,7 +56,7 @@ const jsonLd = {
     },
   },
   areaServed: "Worldwide",
-  serviceType: "AI Coaching",
+  serviceType: "AI Guidance",
   offers: {
     "@type": "Offer",
     price: "295",

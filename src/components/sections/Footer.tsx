@@ -7,10 +7,7 @@ export default function Footer() {
 
       <div className="max-w-3xl mx-auto text-center">
         <p className="font-mono text-text-secondary text-sm mb-1">
-          &copy; 2026 0to1 AI. All rights reserved.
-        </p>
-        <p className="font-mono text-text-dim text-sm mb-1">
-          Founded by Brad Roemer · North County, San Diego
+          &copy; 2026 0to1.AI. All rights reserved.
         </p>
         <p className="font-mono text-text-dim text-sm mb-6">
           <a href="https://get0to1.ai" className="hover:text-accent-green transition-colors">
@@ -20,7 +17,7 @@ export default function Footer() {
 
         <div className="flex items-center justify-center gap-6 mb-8">
           <a
-            href="https://linkedin.com/in/bradroemer"
+            href="https://www.linkedin.com/in/bradroemer/"
             target="_blank"
             rel="noopener noreferrer"
             className="text-text-secondary hover:text-accent-green transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center"
@@ -31,7 +28,7 @@ export default function Footer() {
             </svg>
           </a>
           <a
-            href="mailto:hello@get0to1.ai"
+            href="mailto:bradroemer@gmail.com"
             className="text-text-secondary hover:text-accent-green transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center"
             aria-label="Send email"
           >
