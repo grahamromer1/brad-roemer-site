@@ -43,3 +43,4 @@ next-env.d.ts
 # local test artifacts
 /persona-quiz-results-*.json
 /submit_test_personas.js
+.gstack/

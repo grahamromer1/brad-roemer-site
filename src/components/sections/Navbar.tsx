@@ -8,6 +8,7 @@ const NAV_ITEMS: { id: string; label: string; href?: string }[] = [
   { id: "services", label: "plan" },
   { id: "about", label: "about" },
   { id: "quiz", label: "quiz", href: "/quiz" },
+  { id: "blog", label: "blog", href: "/blog" },
   { id: "book", label: "book" },
   { id: "faq", label: "faq" },
 ];
