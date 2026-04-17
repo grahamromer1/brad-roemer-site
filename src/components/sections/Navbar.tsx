@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { usePathname } from "next/navigation";
 import { useScrollSpy } from "@/components/hooks/useScrollSpy";
+import { EVENTS, track } from "@/lib/analytics";
 
 type NavItem = {
   id: string;
@@ -48,6 +49,11 @@ export default function Navbar() {
   const scrollTo = useCallback(
     (id: string) => {
       setMobileOpen(false);
+      // Track nav clicks to key funnel sections so we can see which
+      // navbar items drive intent (especially "book" and section jumps).
+      if (id === "book") {
+        track(EVENTS.cta_clicked, { cta: "book_intro_call", location: "navbar" });
+      }
       if (!isHome) {
         // Not on the homepage — navigate to /#id so the browser jumps to the section.
         window.location.href = `/#${id}`;
@@ -62,6 +68,14 @@ export default function Navbar() {
     },
     [isHome],
   );
+
+  // Fires for navbar <a href> links (quiz, blog). We only track quiz —
+  // blog click-through isn't part of the funnel.
+  const trackNavLink = useCallback((item: NavItem) => {
+    if (item.id === "quiz") {
+      track(EVENTS.cta_clicked, { cta: "take_quiz", location: "navbar" });
+    }
+  }, []);
 
   return (
     <header
@@ -105,7 +119,12 @@ export default function Navbar() {
             const className = `${baseBox} ${colorClass} ${hoverGlow}`;
 
             return item.href ? (
-              <a key={item.id} href={item.href} className={className}>
+              <a
+                key={item.id}
+                href={item.href}
+                onClick={() => trackNavLink(item)}
+                className={className}
+              >
                 <span aria-hidden="true">[</span>
                 {item.label}
                 <span aria-hidden="true">]</span>
@@ -170,7 +189,12 @@ export default function Navbar() {
               const className = `font-mono text-base text-left py-3 min-h-[44px] ${colorClass}`;
 
               return item.href ? (
-                <a key={item.id} href={item.href} className={className}>
+                <a
+                key={item.id}
+                href={item.href}
+                onClick={() => trackNavLink(item)}
+                className={className}
+              >
                   <span aria-hidden="true">[</span>
                   {item.label}
                   <span aria-hidden="true">]</span>

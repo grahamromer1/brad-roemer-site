@@ -1,5 +1,5 @@
 import BlinkingCursor from "@/components/ui/BlinkingCursor";
-import Button from "@/components/ui/Button";
+import { TrackedQuizCtaButton } from "@/components/analytics/TrackedQuizCta";
 
 export default function Hero() {
   return (
@@ -51,9 +51,9 @@ export default function Hero() {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-3">
-              <Button href="/quiz" aria-label="Take the free AI readiness quiz">
+              <TrackedQuizCtaButton location="hero">
                 Take the Free Quiz <span aria-hidden="true">&rarr;</span>
-              </Button>
+              </TrackedQuizCtaButton>
             </div>
           </div>
         </div>

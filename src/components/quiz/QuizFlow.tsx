@@ -7,6 +7,7 @@ import {
   type QuizAnswers,
   type QuizResult,
 } from "@/lib/quizData";
+import { EVENTS, identifyUser, track } from "@/lib/analytics";
 import QuizResults from "./QuizResults";
 
 // POST to the quiz submission endpoint. Returns true when the server
@@ -63,6 +64,12 @@ export default function QuizFlow() {
     setOpenText(currentAnswer?.openText ?? "");
   }, [currentIndex, currentAnswer?.openText]);
 
+  // Fire quiz_intro_viewed exactly once on mount so we can measure
+  // start-rate (intro_viewed → quiz_started).
+  useEffect(() => {
+    track(EVENTS.quiz_intro_viewed);
+  }, []);
+
   const updateAnswer = useCallback(
     (questionId: string, selected: string[], openTextVal?: string) => {
       setAnswers((prev) => ({
@@ -81,6 +88,25 @@ export default function QuizFlow() {
       const computed = calculateResults(finalAnswers);
       setResult(computed);
       setSubmitStatus("pending");
+
+      // Identify the user in PostHog so we can tie future events (and
+      // the upcoming quiz_completed event) to a person profile. Only
+      // fires when email is provided — anonymous completions stay
+      // anonymous per `person_profiles: identified_only`.
+      if (email && email.trim()) {
+        identifyUser(email.trim(), { firstName, lastName });
+      }
+
+      track(EVENTS.quiz_completed, {
+        result_type: computed.type,
+        result_type_label: computed.typeLabel,
+        ai_maturity: computed.scores.aiMaturity,
+        ai_maturity_max: computed.scores.aiMaturityMax,
+        systems_maturity: computed.scores.systemsMaturity,
+        systems_maturity_max: computed.scores.systemsMaturityMax,
+        had_email: !!(email && email.trim()),
+      });
+
       submitQuizData({
         firstName,
         lastName,
@@ -145,6 +171,18 @@ export default function QuizFlow() {
         updateAnswer(question.id, sel, openText);
       }
 
+      // Capture per-question analytics so we can see drop-off by
+      // question index in PostHog funnels. 1-indexed for dashboard
+      // readability.
+      track(EVENTS.quiz_question_answered, {
+        question_id: question.id,
+        question_section: question.section,
+        question_index: currentIndex + 1,
+        total_questions: totalQuestions,
+        selected_count: sel.length,
+        has_open_text: !!openText,
+      });
+
       if (currentIndex < totalQuestions - 1) {
         transition("forward", () => setCurrentIndex((i) => i + 1));
       } else {
@@ -178,9 +216,12 @@ export default function QuizFlow() {
     (e: React.FormEvent) => {
       e.preventDefault();
       if (!firstName.trim() || !lastName.trim()) return;
+      track(EVENTS.quiz_started, {
+        provided_email_upfront: !!(email && email.trim()),
+      });
       setShowIntro(false);
     },
-    [firstName, lastName]
+    [firstName, lastName, email]
   );
 
   // ── Results Screen ──

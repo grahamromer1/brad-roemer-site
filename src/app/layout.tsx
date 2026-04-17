@@ -1,5 +1,9 @@
 import type { Metadata, Viewport } from "next";
 import { JetBrains_Mono, Plus_Jakarta_Sans } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { PostHogProvider } from "@/components/analytics/PostHogProvider";
+import ClarityScript from "@/components/analytics/ClarityScript";
 import "./globals.css";
 
 // Matches globals.css --bg-primary so mobile browser chrome (iOS Safari
@@ -105,7 +109,10 @@ export default function RootLayout({
         <a href="#main-content" className="skip-link">
           Skip to main content
         </a>
-        {children}
+        <PostHogProvider>{children}</PostHogProvider>
+        <ClarityScript />
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );

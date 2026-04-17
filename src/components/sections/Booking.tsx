@@ -3,6 +3,7 @@
 import TerminalPrompt from "@/components/ui/TerminalPrompt";
 import LazyCalEmbed from "@/components/ui/LazyCalEmbed";
 import { useScrollReveal } from "@/components/hooks/useScrollReveal";
+import { EVENTS, track } from "@/lib/analytics";
 
 export default function Booking() {
   const ref = useScrollReveal<HTMLElement>();
@@ -30,7 +31,20 @@ export default function Booking() {
             you don&apos;t sign up.
           </p>
           <p className="font-mono text-xs text-text-dim text-center mb-8">
-            // tip: take the <a href="/quiz" className="text-accent-amber hover:underline">free quiz</a> first so we can make the call count.
+            // tip: take the{" "}
+            <a
+              href="/quiz"
+              onClick={() =>
+                track(EVENTS.cta_clicked, {
+                  cta: "take_quiz",
+                  location: "booking_tip",
+                })
+              }
+              className="text-accent-amber hover:underline"
+            >
+              free quiz
+            </a>{" "}
+            first so we can make the call count.
           </p>
 
           {/* TODO: Cal.com doesn't natively support hiding times until date

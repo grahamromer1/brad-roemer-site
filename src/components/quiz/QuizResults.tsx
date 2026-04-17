@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { type QuizResult, type QuizAnswers } from "@/lib/quizData";
+import { EVENTS, identifyUser, track } from "@/lib/analytics";
 
 interface QuizResultsProps {
   result: QuizResult;
@@ -74,10 +75,31 @@ export default function QuizResults({
 
   const hadEmailUpfront = !!(email && email.trim().length > 0);
 
+  // Fire results-viewed once so we can measure (completed → viewed) and
+  // (viewed → CTA click) separately. In practice these happen back-to-back
+  // but keeping them distinct future-proofs against async loading.
+  useEffect(() => {
+    track(EVENTS.quiz_results_viewed, {
+      result_type: type,
+      result_type_label: typeLabel,
+      had_email_upfront: hadEmailUpfront,
+    });
+  }, [type, typeLabel, hadEmailUpfront]);
+
   async function handleEmailCapture(e: React.FormEvent) {
     e.preventDefault();
     if (!captureEmail.trim() || captureSubmitting) return;
     setCaptureSubmitting(true);
+
+    // Identify + track at the moment of capture so we get both the
+    // person profile (PostHog can now dedupe future sessions by email)
+    // and a clean conversion event to put on dashboards.
+    const trimmedEmail = captureEmail.trim();
+    identifyUser(trimmedEmail, { firstName, lastName });
+    track(EVENTS.results_email_captured, {
+      result_type: type,
+      source: "results_page",
+    });
 
     try {
       await fetch("/api/quiz/submit", {
@@ -86,7 +108,7 @@ export default function QuizResults({
         body: JSON.stringify({
           firstName: firstName || "",
           lastName: lastName || "",
-          email: captureEmail.trim(),
+          email: trimmedEmail,
           answers: answers ?? {},
           scores,
           type,
@@ -262,13 +284,30 @@ export default function QuizResults({
           </p>
           <a
             href="/#book"
+            onClick={() =>
+              track(EVENTS.cta_clicked, {
+                cta: "book_intro_call",
+                location: "results_primary",
+                result_type: type,
+              })
+            }
             className="inline-flex items-center justify-center px-8 py-4 rounded-lg font-mono text-base font-semibold transition-all duration-200 min-h-[44px] bg-accent-green text-bg-primary hover:scale-[1.02] hover:shadow-[0_0_20px_rgba(74,222,128,0.3)]"
           >
             Book a Free Intro Call
           </a>
           <p className="font-mono text-xs text-text-dim pt-1">
             // or see the{" "}
-            <a href="/#services" className="text-accent-amber hover:underline">
+            <a
+              href="/#services"
+              onClick={() =>
+                track(EVENTS.cta_clicked, {
+                  cta: "see_full_plan",
+                  location: "results_secondary",
+                  result_type: type,
+                })
+              }
+              className="text-accent-amber hover:underline"
+            >
               full plan
             </a>{" "}
             first — $295/mo, cancel anytime.

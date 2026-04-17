@@ -4,6 +4,7 @@ import TerminalPrompt from "@/components/ui/TerminalPrompt";
 import TerminalWindow from "@/components/ui/TerminalWindow";
 import Button from "@/components/ui/Button";
 import { useScrollReveal } from "@/components/hooks/useScrollReveal";
+import { EVENTS, track } from "@/lib/analytics";
 
 const BENEFITS = [
   "A personalized weekly game plan \u2014 one quick win, one real project, tailored to where you are",
@@ -85,14 +86,24 @@ export default function Services() {
                 <Button
                   href="/quiz"
                   variant="primary"
-                  aria-label="Take the free AI readiness quiz"
+                  onClick={() =>
+                    track(EVENTS.cta_clicked, {
+                      cta: "take_quiz",
+                      location: "services",
+                    })
+                  }
                 >
                   Take the Free Quiz <span aria-hidden="true">&rarr;</span>
                 </Button>
                 <Button
                   href="#book"
                   variant="secondary"
-                  aria-label="Book a free intro call"
+                  onClick={() =>
+                    track(EVENTS.cta_clicked, {
+                      cta: "book_intro_call",
+                      location: "services",
+                    })
+                  }
                 >
                   Book a Free Intro Call
                 </Button>
