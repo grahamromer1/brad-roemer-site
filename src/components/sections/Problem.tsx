@@ -35,6 +35,7 @@ export default function Problem() {
         <TerminalPrompt
           command="cat problems.md"
           heading="Why learning AI on your own is broken"
+          subheading="Sound familiar?"
         />
 
         <div className="space-y-8">
@@ -44,8 +45,9 @@ export default function Problem() {
               className="fade-in-up pl-4 border-l-2 border-border-terminal"
               style={{ transitionDelay: `${i * 100}ms` }}
             >
-              <p className="font-mono text-base md:text-lg text-text-primary font-semibold mb-1">
-                <span className="text-accent-amber">[!]</span> {p.title}
+              <p className="font-sans text-base md:text-lg text-text-primary font-semibold mb-1">
+                <span className="font-mono text-accent-amber">[!]</span>{" "}
+                {p.title}
               </p>
               <p className="font-sans text-text-secondary text-base leading-relaxed ml-6">
                 {p.desc}

@@ -7,8 +7,8 @@ import { useScrollReveal } from "@/components/hooks/useScrollReveal";
 
 const BENEFITS = [
   "A personalized weekly game plan \u2014 one quick win, one real project, tailored to where you are",
-  "Curated AI briefing every week \u2014 the news, tools, and tactics that actually matter, filtered so you don\u2019t have to",
-  "The 0to1.AI team in your corner \u2014 ask questions, get unstuck, and join a growing community of operators building with AI",
+  "Curated AI briefing every week \u2014 the news, tools, and tactics that actually matter, filtered so you don\u2019t have to be",
+  "The 0to1 team in your corner \u2014 ask questions, get unstuck, and join a growing community of operators building with AI",
   "Real fluency, not just tips \u2014 you learn the fundamentals so you can solve, build, and implement on your own",
 ];
 
@@ -27,6 +27,7 @@ export default function Services() {
         <TerminalPrompt
           command="cat plan.md"
           heading="Pricing and what you get"
+          subheading="What you get"
         />
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 items-start">

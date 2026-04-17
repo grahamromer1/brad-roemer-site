@@ -13,6 +13,7 @@ export default function Booking() {
         <TerminalPrompt
           command="./book --intro-call"
           heading="Book a free intro call"
+          subheading="15 minutes, free, no pitch"
         />
 
         <div className="fade-in-up">

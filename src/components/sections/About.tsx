@@ -18,7 +18,11 @@ export default function About() {
   return (
     <section id="about" className="py-20 md:py-32 px-4 sm:px-6" ref={ref}>
       <div className="max-w-2xl mx-auto">
-        <TerminalPrompt command="cat about.md" heading="About Brad Roemer" />
+        <TerminalPrompt
+          command="cat about.md"
+          heading="About Brad Roemer"
+          subheading="Who built this"
+        />
 
         <div className="fade-in-up font-sans text-text-secondary text-base md:text-lg leading-relaxed space-y-5 mb-10">
           <p>

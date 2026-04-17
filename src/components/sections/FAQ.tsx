@@ -56,6 +56,7 @@ export default function FAQ() {
         <TerminalPrompt
           command="cat faq.md"
           heading="Frequently asked questions"
+          subheading="Common questions"
         />
 
         <div className="space-y-8">
@@ -65,8 +66,9 @@ export default function FAQ() {
               className="fade-in-up pl-4 border-l-2 border-border-terminal"
               style={{ transitionDelay: `${i * 75}ms` }}
             >
-              <p className="font-mono text-base md:text-lg text-text-primary font-semibold mb-1">
-                <span className="text-accent-cyan">[?]</span> {item.q}
+              <p className="font-sans text-base md:text-lg text-text-primary font-semibold mb-1">
+                <span className="font-mono text-accent-cyan">[?]</span>{" "}
+                {item.q}
               </p>
               <p className="font-sans text-text-secondary text-base leading-relaxed ml-6">
                 {item.a}

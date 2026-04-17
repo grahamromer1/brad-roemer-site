@@ -20,6 +20,7 @@ export default function Proof() {
         <TerminalPrompt
           command="cat proof.md"
           heading="Why you can trust this program"
+          subheading="Why operators trust this"
         />
 
         <p className="fade-in-up font-mono text-xs text-accent-cyan uppercase tracking-wider mb-6">

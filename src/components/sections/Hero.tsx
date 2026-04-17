@@ -3,7 +3,10 @@ import Button from "@/components/ui/Button";
 
 export default function Hero() {
   return (
-    <section id="hero" className="min-h-screen flex items-center justify-center relative px-4 sm:px-6">
+    <section
+      id="hero"
+      className="min-h-screen flex items-center justify-center relative px-4 sm:px-6 pt-28 sm:pt-32 md:pt-36 pb-12"
+    >
       <div className="max-w-3xl w-full">
         {/* Terminal window wrapper */}
         <div className="rounded-lg border border-border-terminal bg-bg-surface/50 overflow-hidden">
@@ -50,9 +53,6 @@ export default function Hero() {
             <div className="flex flex-col sm:flex-row gap-3">
               <Button href="/quiz" aria-label="Take the free AI readiness quiz">
                 Take the Free Quiz <span aria-hidden="true">&rarr;</span>
-              </Button>
-              <Button href="#book" variant="secondary" aria-label="Book a free intro call">
-                Book a Free Intro Call
               </Button>
             </div>
           </div>

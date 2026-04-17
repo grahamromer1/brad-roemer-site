@@ -87,6 +87,7 @@ export default function Process() {
         <TerminalPrompt
           command="./how-it-works --explain"
           heading="How the 0to1.AI program works"
+          subheading="How it works"
         />
 
         <div className="fade-in-up max-w-2xl mb-10 space-y-2">
