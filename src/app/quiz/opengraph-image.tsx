@@ -2,7 +2,7 @@ import { ImageResponse } from "next/og";
 import { loadJetBrainsMono } from "@/lib/og-fonts";
 
 export const alt =
-  "0to1.AI — Personal AI guidance for solo operators. Learn AI with a guide, not a guru.";
+  "AI Readiness Quiz — 0to1.AI. 5 minutes, see where you stand with AI today.";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -35,7 +35,6 @@ export default async function Image() {
           fontFamily: "JetBrains Mono",
         }}
       >
-        {/* Terminal window */}
         <div
           style={{
             flex: 1,
@@ -82,13 +81,9 @@ export default async function Image() {
               }}
             />
             <div
-              style={{
-                marginLeft: "14px",
-                fontSize: "18px",
-                color: textDim,
-              }}
+              style={{ marginLeft: "14px", fontSize: "18px", color: textDim }}
             >
-              0to1.md
+              quiz.md
             </div>
           </div>
 
@@ -113,32 +108,26 @@ export default async function Image() {
               <span style={{ color: green, marginRight: "10px" }}>
                 ~/0to1 $
               </span>
-              <span>whoami</span>
+              <span>./quiz --start</span>
             </div>
 
             <div
               style={{
                 display: "flex",
                 flexDirection: "column",
-                fontSize: "88px",
+                fontSize: "92px",
                 fontWeight: 700,
                 color: textPrimary,
                 lineHeight: 1.05,
                 marginBottom: "28px",
               }}
             >
-              <span>AI-curious to</span>
-              <span>AI-fluent.</span>
+              <span>AI Readiness</span>
+              <span>Quiz.</span>
             </div>
 
-            <div
-              style={{
-                fontSize: "30px",
-                color: green,
-                marginBottom: "40px",
-              }}
-            >
-              Learn AI with a guide, not a guru.
+            <div style={{ display: "flex", fontSize: "30px", color: green, marginBottom: "40px" }}>
+              <span>5 minutes · 2 high-leverage actions this week.</span>
             </div>
 
             <div
@@ -152,9 +141,11 @@ export default async function Image() {
             >
               <span style={{ display: "flex" }}>
                 <span style={{ color: amber, marginRight: "10px" }}>[!]</span>
-                <span>$295/mo · cancel anytime</span>
+                <span>Free · No email required</span>
               </span>
-              <span style={{ color: green, fontWeight: 700 }}>get0to1.ai</span>
+              <span style={{ color: green, fontWeight: 700 }}>
+                get0to1.ai/quiz
+              </span>
             </div>
           </div>
         </div>

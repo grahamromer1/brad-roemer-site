@@ -1,6 +1,13 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { JetBrains_Mono, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
+
+// Matches globals.css --bg-primary so mobile browser chrome (iOS Safari
+// address bar, Android Chrome status bar) blends into the site background.
+export const viewport: Viewport = {
+  themeColor: "#0C0C0C",
+  colorScheme: "dark",
+};
 
 // Only ship the weights actually used in the app: regular body text (400),
 // font-semibold (600), and font-bold (700). This trims ~6 weight files per
