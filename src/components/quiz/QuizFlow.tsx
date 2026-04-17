@@ -9,22 +9,31 @@ import {
 } from "@/lib/quizData";
 import QuizResults from "./QuizResults";
 
-// Fire-and-forget POST to the quiz submission endpoint.
-// Never surfaces errors to the user — logs silently.
-function submitQuizData(payload: Record<string, unknown>) {
+// POST to the quiz submission endpoint. Returns true when the server
+// confirms the payload was forwarded upstream, false otherwise.
+async function submitQuizData(
+  payload: Record<string, unknown>
+): Promise<boolean> {
   try {
-    fetch("/api/quiz/submit", {
+    const res = await fetch("/api/quiz/submit", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload),
       keepalive: true,
-    }).catch((err) => {
-      // eslint-disable-next-line no-console
-      console.warn("[quiz] submit failed", err);
     });
+    if (!res.ok) {
+      // eslint-disable-next-line no-console
+      console.warn("[quiz] submit non-OK", res.status);
+      return false;
+    }
+    const json = (await res.json().catch(() => null)) as
+      | { forwarded?: boolean }
+      | null;
+    return !!json?.forwarded;
   } catch (err) {
     // eslint-disable-next-line no-console
     console.warn("[quiz] submit threw", err);
+    return false;
   }
 }
 
@@ -40,6 +49,9 @@ export default function QuizFlow() {
   const [result, setResult] = useState<QuizResult | null>(null);
   const [direction, setDirection] = useState<"forward" | "back">("forward");
   const [animating, setAnimating] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<
+    "pending" | "ok" | "failed"
+  >("pending");
 
   const totalQuestions = QUIZ_QUESTIONS.length;
   const question = QUIZ_QUESTIONS[currentIndex];
@@ -68,6 +80,7 @@ export default function QuizFlow() {
     (finalAnswers: QuizAnswers) => {
       const computed = calculateResults(finalAnswers);
       setResult(computed);
+      setSubmitStatus("pending");
       submitQuizData({
         firstName,
         lastName,
@@ -79,7 +92,7 @@ export default function QuizFlow() {
         insights: computed.insights,
         actions: computed.actions,
         timestamp: new Date().toISOString(),
-      });
+      }).then((ok) => setSubmitStatus(ok ? "ok" : "failed"));
     },
     [firstName, lastName, email]
   );
@@ -179,6 +192,7 @@ export default function QuizFlow() {
         lastName={lastName}
         email={email}
         answers={answers}
+        submitStatus={submitStatus}
       />
     );
   }

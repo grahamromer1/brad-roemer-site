@@ -9,6 +9,7 @@ interface QuizResultsProps {
   lastName?: string;
   email?: string;
   answers?: QuizAnswers;
+  submitStatus?: "pending" | "ok" | "failed";
 }
 
 function AxisBar({
@@ -63,6 +64,7 @@ export default function QuizResults({
   lastName,
   email,
   answers,
+  submitStatus,
 }: QuizResultsProps) {
   const { scores, type, typeLabel, typeDescription, insights, actions } = result;
 
@@ -121,6 +123,24 @@ export default function QuizResults({
       </div>
 
       <div className="max-w-2xl mx-auto px-4 sm:px-6 py-8 md:py-12 space-y-8">
+        {submitStatus === "failed" && (
+          <div className="rounded-lg border border-amber-400 bg-amber-400/5 px-4 py-3 flex flex-wrap items-center justify-between gap-3">
+            <p className="font-mono text-xs md:text-sm text-amber-400">
+              // heads up — your results saved locally but didn&apos;t reach
+              us.
+            </p>
+            <button
+              type="button"
+              onClick={() => {
+                if (typeof window !== "undefined") window.location.reload();
+              }}
+              className="font-mono text-xs md:text-sm text-amber-400 border border-amber-400 rounded px-3 py-1 hover:bg-amber-400/10 transition-colors"
+            >
+              retry
+            </button>
+          </div>
+        )}
+
         {/* ── 1. Type Badge + Description ── */}
         <div className="text-center space-y-4">
           <TypeIcon type={type} />
