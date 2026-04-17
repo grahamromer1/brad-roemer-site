@@ -1,15 +1,23 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
+import { usePathname } from "next/navigation";
 import { useScrollSpy } from "@/components/hooks/useScrollSpy";
 
-const NAV_ITEMS: { id: string; label: string; href?: string }[] = [
+type NavItem = {
+  id: string;
+  label: string;
+  href?: string;
+  highlight?: "amber" | "green";
+};
+
+const NAV_ITEMS: NavItem[] = [
   { id: "process", label: "how it works" },
   { id: "services", label: "plan" },
   { id: "about", label: "about" },
-  { id: "quiz", label: "quiz", href: "/quiz" },
+  { id: "quiz", label: "quiz", href: "/quiz", highlight: "amber" },
   { id: "blog", label: "blog", href: "/blog" },
-  { id: "book", label: "book" },
+  { id: "book", label: "book", highlight: "green" },
   { id: "faq", label: "faq" },
 ];
 
@@ -25,6 +33,8 @@ const SECTION_IDS = [
 ];
 
 export default function Navbar() {
+  const pathname = usePathname();
+  const isHome = pathname === "/";
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const activeId = useScrollSpy(SECTION_IDS, 100);
@@ -35,15 +45,23 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const scrollTo = useCallback((id: string) => {
-    setMobileOpen(false);
-    const el = document.getElementById(id);
-    if (el) {
-      const offset = 80;
-      const top = el.getBoundingClientRect().top + window.scrollY - offset;
-      window.scrollTo({ top, behavior: "smooth" });
-    }
-  }, []);
+  const scrollTo = useCallback(
+    (id: string) => {
+      setMobileOpen(false);
+      if (!isHome) {
+        // Not on the homepage — navigate to /#id so the browser jumps to the section.
+        window.location.href = `/#${id}`;
+        return;
+      }
+      const el = document.getElementById(id);
+      if (el) {
+        const offset = 80;
+        const top = el.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top, behavior: "smooth" });
+      }
+    },
+    [isHome],
+  );
 
   return (
     <header
@@ -68,13 +86,26 @@ export default function Navbar() {
 
         {/* Desktop nav */}
         <div className="hidden md:flex items-center gap-1">
-          {NAV_ITEMS.map((item) =>
-            item.href ? (
-              <a
-                key={item.id}
-                href={item.href!}
-                className={`inline-flex items-center font-mono text-sm leading-none px-3 py-2 rounded transition-colors min-h-[44px] text-accent-amber hover:shadow-[0_0_10px_rgba(251,191,36,0.2)]`}
-              >
+          {NAV_ITEMS.map((item) => {
+            const isActive = isHome && activeId === item.id;
+            const colorClass =
+              item.highlight === "amber"
+                ? "text-accent-amber hover:text-accent-amber"
+                : item.highlight === "green"
+                ? "text-accent-green hover:text-accent-green"
+                : isActive
+                ? "text-accent-green"
+                : "text-text-secondary hover:text-text-primary";
+            const hoverGlow =
+              item.highlight === "amber"
+                ? "hover:shadow-[0_0_10px_rgba(251,191,36,0.2)]"
+                : "hover:shadow-[0_0_10px_rgba(74,222,128,0.15)]";
+            const baseBox =
+              "inline-flex items-center font-mono text-sm leading-none px-3 py-2 rounded min-h-[44px] border border-transparent hover:border-border-terminal hover:bg-bg-surface/60 transition-[color,background-color,border-color,box-shadow] duration-150";
+            const className = `${baseBox} ${colorClass} ${hoverGlow}`;
+
+            return item.href ? (
+              <a key={item.id} href={item.href} className={className}>
                 <span aria-hidden="true">[</span>
                 {item.label}
                 <span aria-hidden="true">]</span>
@@ -83,19 +114,15 @@ export default function Navbar() {
               <button
                 key={item.id}
                 onClick={() => scrollTo(item.id)}
-                aria-current={activeId === item.id ? "page" : undefined}
-                className={`inline-flex items-center font-mono text-sm leading-none px-3 py-2 rounded transition-colors min-h-[44px] ${
-                  activeId === item.id
-                    ? "text-accent-green"
-                    : "text-text-secondary hover:text-text-primary"
-                } ${item.id === "book" ? "text-accent-green hover:shadow-[0_0_10px_rgba(74,222,128,0.2)]" : ""}`}
+                aria-current={isActive ? "page" : undefined}
+                className={className}
               >
                 <span aria-hidden="true">[</span>
                 {item.label}
                 <span aria-hidden="true">]</span>
               </button>
-            )
-          )}
+            );
+          })}
         </div>
 
         {/* Mobile hamburger */}
@@ -130,13 +157,20 @@ export default function Navbar() {
           className="md:hidden bg-[#0C0C0C]/95 backdrop-blur-md border-b border-border-terminal"
         >
           <div className="flex flex-col px-6 py-4 gap-2">
-            {NAV_ITEMS.map((item) =>
-              item.href ? (
-                <a
-                  key={item.id}
-                  href={item.href!}
-                  className="font-mono text-base text-left py-3 min-h-[44px] text-accent-amber"
-                >
+            {NAV_ITEMS.map((item) => {
+              const isActive = isHome && activeId === item.id;
+              const colorClass =
+                item.highlight === "amber"
+                  ? "text-accent-amber"
+                  : item.highlight === "green"
+                  ? "text-accent-green"
+                  : isActive
+                  ? "text-accent-green"
+                  : "text-text-secondary";
+              const className = `font-mono text-base text-left py-3 min-h-[44px] ${colorClass}`;
+
+              return item.href ? (
+                <a key={item.id} href={item.href} className={className}>
                   <span aria-hidden="true">[</span>
                   {item.label}
                   <span aria-hidden="true">]</span>
@@ -145,17 +179,15 @@ export default function Navbar() {
                 <button
                   key={item.id}
                   onClick={() => scrollTo(item.id)}
-                  aria-current={activeId === item.id ? "page" : undefined}
-                  className={`font-mono text-base text-left py-3 min-h-[44px] ${
-                    activeId === item.id ? "text-accent-green" : "text-text-secondary"
-                  }`}
+                  aria-current={isActive ? "page" : undefined}
+                  className={className}
                 >
                   <span aria-hidden="true">[</span>
                   {item.label}
                   <span aria-hidden="true">]</span>
                 </button>
-              )
-            )}
+              );
+            })}
           </div>
         </div>
       )}

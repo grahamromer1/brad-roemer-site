@@ -44,7 +44,7 @@ const STEPS: {
   {
     num: "06",
     title: "ASK ANYTHING, ANYTIME",
-    desc: "Questions between calls? Send them anytime and get real, thoughtful answers from the 0to1 team — fast, personal, and specific to your situation.",
+    desc: "Questions between calls? Send them anytime and get real, thoughtful answers from the 0to1.AI team — fast, personal, and specific to your situation.",
     group: "program",
   },
 ];

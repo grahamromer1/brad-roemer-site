@@ -33,15 +33,14 @@ export default function Hero() {
             <div className="mb-10">
               <p className="font-sans text-lg sm:text-xl md:text-2xl text-text-primary leading-relaxed mb-5">
                 You knew you needed to figure out AI. You just didn&apos;t know
-                where to start &mdash; and most of what&apos;s out there is built
-                for engineers, not people running a business.
+                where to start.
               </p>
               <p className="font-sans text-text-secondary text-base md:text-lg leading-relaxed">
                 0to1.AI is personal AI guidance for your business and your
                 life. Each week you learn what to focus on next, a monthly
                 call to talk through what&apos;s working, and a community of
                 operators learning alongside you. A compounding knowledge base
-                that builds week over week.
+                that grows every week so you can build your own systems.
               </p>
               <p className="font-sans text-text-secondary text-sm md:text-base mt-4 leading-relaxed">
                 Built by a self-taught operator who figured it out the hard way.

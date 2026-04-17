@@ -30,7 +30,7 @@ export default function About() {
             going to change everything — and couldn&apos;t find a good place to
             start learning it. YouTube videos, online courses, free tools,
             Reddit threads. Months of experimenting — all one-off, none of it
-            directed, none of it building toward anything.
+            directed, none of it building toward anything worthwhile.
           </p>
           <p>
             Then I built myself a plan. Mapped out what to learn, in what order,
