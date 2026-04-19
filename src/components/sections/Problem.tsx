@@ -24,6 +24,11 @@ const PROBLEMS = [
       "You\u2019re watching other people create things with AI that weren\u2019t possible six months ago.",
     desc: "It\u2019s not fear — it\u2019s recognition. These are skills you need for the next chapter of your work and your life. You just need a place to start building them.",
   },
+  {
+    title:
+      "You\u2019ve consumed plenty of AI content \u2014 but you still can\u2019t diagnose what\u2019s actually going wrong when something doesn\u2019t work.",
+    desc: "That\u2019s the real gap. Not knowledge \u2014 judgment. The ability to look at an AI interaction that failed and name exactly why.",
+  },
 ];
 
 export default function Problem() {

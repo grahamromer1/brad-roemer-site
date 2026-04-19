@@ -306,7 +306,7 @@ export default function QuizResults({
                   result_type: type,
                 })
               }
-              className="text-accent-amber hover:underline"
+              className="underline decoration-dotted underline-offset-2 hover:text-text-secondary"
             >
               full plan
             </a>{" "}

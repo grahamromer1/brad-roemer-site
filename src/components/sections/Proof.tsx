@@ -8,6 +8,7 @@ const STATS = [
   { key: "workshops run", value: "5+" },
   { key: "AI agents built", value: "multiple, running live" },
   { key: "AI businesses built", value: "2 (and counting)" },
+  { key: "foundation clients", value: "growing" },
   { key: "technical background", value: "zero" },
 ];
 

@@ -14,15 +14,15 @@ const FAQS: { q: string; a: string }[] = [
   },
   {
     q: "How is this different from an online course?",
-    a: "Courses are generic and one-directional. This is personalized to your business, updated every week with what\u2019s actually happening in AI right now, and you have the 0to1.AI team you can ask questions anytime. Nothing you get here is off-the-shelf.",
+    a: "Courses give you information. 0to1 builds a skill. The first 5 weeks follow a structured foundation \u2014 each session shifts how you think about AI, not just what buttons to press. After that, the program branches based on where you want to go. It\u2019s personalized to your business, updated every week, and you have the 0to1.AI team you can ask questions anytime. Nothing here is off-the-shelf.",
   },
   {
     q: "How much time does this take per week?",
-    a: "Most people spend 1\u20132 hours on their weekly guide plus whatever time they spend trying things. The monthly call is 30 minutes. It\u2019s designed to fit around running a business, not replace it.",
+    a: "Each session is designed to take 20\u201330 minutes for the core build, plus whatever time you spend experimenting on your own. Most people spend about 1\u20132 hours total per week. The monthly call is 30 minutes. It\u2019s designed to fit around running a business, not replace it.",
   },
   {
     q: "Can I cancel anytime?",
-    a: "Yes. Month-to-month, cancel anytime. No contracts, no commitments beyond the current month. If you prepay your first two months ($195/mo instead of $295/mo), that\u2019s the only commitment \u2014 and it saves you $200.",
+    a: "Yes. Month-to-month, cancel anytime. No contracts, no commitments beyond the current month.",
   },
   {
     q: "What happens on the intro call?",

@@ -7,10 +7,14 @@ import { useScrollReveal } from "@/components/hooks/useScrollReveal";
 import { EVENTS, track } from "@/lib/analytics";
 
 const BENEFITS = [
-  "A personalized weekly game plan \u2014 one quick win, one real project, tailored to where you are",
-  "Curated AI briefing every week \u2014 the news, tools, and tactics that actually matter, filtered so you don\u2019t have to be",
-  "The 0to1 team in your corner \u2014 ask questions, get unstuck, and join a growing community of operators building with AI",
-  "Real fluency, not just tips \u2014 you learn the fundamentals so you can solve, build, and implement on your own",
+  "Kickoff call to map your opportunities + quick wins",
+  "Weekly sessions \u2014 each with a mindset shift + a hands-on build",
+  "Sessions that branch as you grow: personal systems, business ops, or building something new",
+  "Monthly 30-min strategy call",
+  "Async access to the 0to1.AI team \u2014 ask anything, anytime, and get fast, personal answers specific to your situation",
+  "Curated AI briefings \u2014 the news and tools that actually matter, filtered so you don\u2019t have to keep up with a market that moves every week",
+  "Personal Notion knowledge base \u2014 every session archived and searchable, yours to keep forever",
+  "A framework for thinking about AI that compounds \u2014 the skill to see where it fits, whether you\u2019re solving a problem or building something new",
 ];
 
 const UPCHARGES = [
@@ -65,18 +69,22 @@ export default function Services() {
                 </p>
               </div>
 
-              <p className="font-mono text-sm text-text-secondary uppercase tracking-wider mb-3">
-                // what you get:
+              <p className="font-mono text-sm text-text-secondary uppercase tracking-wider mb-4">
+                // what&apos;s included:
               </p>
-              <ul className="space-y-3 mb-6">
+              <ul className="space-y-3 mb-6" role="list">
                 {BENEFITS.map((item) => (
                   <li
                     key={item}
-                    className="pl-4 border-l-2 border-accent-green"
+                    className="font-sans text-sm md:text-base text-text-secondary leading-relaxed flex gap-2"
                   >
-                    <p className="font-sans text-sm md:text-base text-text-secondary leading-relaxed">
-                      {item}
-                    </p>
+                    <span
+                      className="font-mono text-accent-green shrink-0"
+                      aria-hidden="true"
+                    >
+                      &rarr;
+                    </span>
+                    <span>{item}</span>
                   </li>
                 ))}
               </ul>
@@ -108,13 +116,6 @@ export default function Services() {
                   Book a Free Intro Call
                 </Button>
               </div>
-
-              {/* Promo — at the bottom, feels like a bonus */}
-              <p className="font-mono text-xs text-accent-amber mt-5">
-                <span aria-hidden="true">[!]</span> First two months:{" "}
-                <span className="text-accent-green font-bold">$195/mo</span>{" "}
-                when you pay for both upfront.
-              </p>
             </TerminalWindow>
           </div>
 

@@ -40,10 +40,10 @@ export default function Hero() {
               </p>
               <p className="font-sans text-text-secondary text-base md:text-lg leading-relaxed">
                 0to1.AI is personal AI guidance for your business and your
-                life. Each week you learn what to focus on next, a monthly
-                call to talk through what&apos;s working, and a community of
-                operators learning alongside you. A compounding knowledge base
-                that grows every week so you can build your own systems.
+                life. You&apos;ll build a real foundation &mdash; not just
+                tips, but the skill to diagnose and solve AI problems on
+                your own. Each week goes deeper, tailored to what matters
+                most to you.
               </p>
               <p className="font-sans text-text-secondary text-sm md:text-base mt-4 leading-relaxed">
                 Built by a self-taught operator who figured it out the hard way.
