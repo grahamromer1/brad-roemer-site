@@ -268,12 +268,32 @@ export interface QuizScores {
 
 export type QuizType = "blank_slate" | "organized_starter" | "curious_tinkerer" | "ready_builder";
 
+export interface Phase1Week {
+  num: number;
+  title: string;
+  description: string;
+}
+
 export interface QuizResult {
   scores: QuizScores;
   type: QuizType;
   typeLabel: string;
   typeDescription: string;
+  /** Plain-English diagnosis of the mindset currently running under the surface. */
+  surfaceParagraph: string;
+  /** One-line cost of inaction. */
+  stakes: string;
+  /** Honest early-access proof line. No invented numbers. */
+  proof: string;
+  /** Shared 5-week Phase I arc. Identical for every archetype. */
+  phase1Arc: Phase1Week[];
+  /** Which week numbers (1–5) are "especially high leverage" for this archetype. */
+  highlightedWeeks: number[];
+  /** Two mini builds to try before Week 1 fires — previews of session concepts. */
+  tryThisWeek: [string, string];
+  /** @deprecated kept for webhook back-compat — mirrors surfaceParagraph + stakes. */
   insights: [string, string];
+  /** @deprecated kept for webhook back-compat — mirrors tryThisWeek. */
   actions: [string, string];
 }
 
@@ -364,26 +384,116 @@ const TYPE_INFO: Record<QuizType, { label: string; description: string }> = {
   blank_slate: {
     label: "The Blank Slate",
     description:
-      "You're running your business on instinct and hustle — and it's working. But you're doing everything manually, and AI feels like a foreign language. The good news: you have the most to gain, and the first wins will feel massive.",
+      "You're running on hustle and instinct — and it's working. But you're doing everything manually, and AI still feels like a foreign language. Good news: you have the most to gain, and the first couple of wins will feel massive.",
   },
   organized_starter: {
     label: "The Organized Starter",
     description:
-      "You've got systems in place and run a tight ship. You just haven't brought AI into the mix yet. You're actually in a great position — because your existing organization means AI can plug in fast and start saving you real time.",
+      "You've already got systems and a tight operation. AI is the one lever you haven't pulled yet — which means the runway is short. Your structure is a head start most people don't have.",
   },
   curious_tinkerer: {
     label: "The Curious Tinkerer",
     description:
-      "You've played with AI — maybe used ChatGPT for emails or brainstorming — but your business systems are still scattered. You know AI is powerful, but you haven't figured out how to connect it to your actual workflows. That's the unlock.",
+      "You've played with AI enough to know it works \u2014 sometimes. But the results are inconsistent, the chats drift, and you're back to old habits by Wednesday. You know what's possible. You just haven't stitched it to your actual workflow yet.",
   },
   ready_builder: {
     label: "The Ready Builder",
     description:
-      "You've got tools, you've got some AI experience, and you know there's more. You're past the \"what is AI\" stage and ready to build real workflows and systems. You need a blueprint, not an introduction.",
+      "You're past \"what is AI\" and into \"why doesn't this ship.\" You've got the tools and the reps, and you can feel the ceiling. You don't need an introduction \u2014 you need the structure that gets AI producing deliverables instead of drafts.",
   },
 };
 
-// ── Insight & Action Libraries ────────────────────────────
+// ── "What's running under the surface" — one paragraph per archetype
+// Names the current mindset in plain English. Hints at the fix without
+// naming the 7-Input framework (protects the Session 6 reveal).
+
+export const TYPE_SURFACE_PARAGRAPH: Record<QuizType, string> = {
+  blank_slate:
+    "You've probably asked ChatGPT something, gotten a useless answer, and moved on. That's because you're treating it like Google \u2014 type a question, get an answer, done. It works dramatically better when you let it ask YOU a couple of questions back before it opens its mouth. That's the first shift.",
+  organized_starter:
+    "Your Google Drive, your CRM, your SOPs \u2014 all that order is exactly what AI needs to plug into. The gap isn't organization; it's knowing how to talk to AI so answers come back about your actual business, not generic advice scraped off LinkedIn.",
+  curious_tinkerer:
+    "Here's what's going on: every chat starts blank, so every answer is generic. Long chats drift. You've felt both 200 times. Two specific moves close most of the gap \u2014 one at the start of a chat, one mid-conversation. Small. Mechanical. Nothing philosophical.",
+  ready_builder:
+    "You've hit the ceiling where AI talks well but doesn't ship. The fix isn't more tools or better prompts \u2014 it's the input structure you'd give a new hire on day one, plus a habit of making every response end with something you could actually use. Weeks 1\u20133 build that lattice. Weeks 4\u20135 put it to work.",
+};
+
+// ── Stakes — one line per archetype, placed right after surfaceParagraph.
+// Blunt but not doom-y. Opportunity cost, not fear.
+
+export const TYPE_STAKES: Record<QuizType, string> = {
+  blank_slate:
+    "Stay on hustle-and-instinct and AI becomes a thing you'll keep saying you should figure out \u2014 for three more years. The gap between what your business could run on and what it actually runs on keeps widening.",
+  organized_starter:
+    "A tight operation without AI wired in is running at a fraction of what your stack could actually do. The longer you sit on the lever, the more you'll feel the gap when you finally pull it.",
+  curious_tinkerer:
+    "You'll keep buying $50 courses that start strong and never stick. Another year passes. You still know more about AI than you actually use.",
+  ready_builder:
+    "The ceiling is real and it compounds. Another six months of AI-that-drafts-but-doesn't-ship is six more months where your output is capped by your own hours.",
+};
+
+// ── Proof — honest early-access framing, one line per archetype.
+// No invented numbers or testimonials. Authentic beats fake.
+
+export const TYPE_PROOF: Record<QuizType, string> = {
+  blank_slate:
+    "Early-access cohort \u2014 the first Blank Slates through Phase I are helping shape what it looks like for people in your spot. Small group, direct access.",
+  organized_starter:
+    "Early-access \u2014 the first operators with your kind of structure are through Phase I now. Their feedback is shaping what Phase II becomes.",
+  curious_tinkerer:
+    "Early-access \u2014 Phase I is being refined with the first cohort right now. If you want input on how it gets built for people like you, this is the window.",
+  ready_builder:
+    "Early-access \u2014 Ready Builders are the ones pressure-testing Phase I and Phase II right now. You'd be in that group.",
+};
+
+// ── Phase I arc — shared across all archetypes. Bolded weeks vary.
+// Week titles deliberately plain-English; no framework vocabulary.
+
+export const PHASE1_ARC: Phase1Week[] = [
+  {
+    num: 1,
+    title: "Treat AI like a brain, not a search bar",
+    description:
+      "How to have real conversations that actually get you useful answers.",
+  },
+  {
+    num: 2,
+    title: "Teach AI who you are and what you do",
+    description:
+      "Give AI the context it needs so answers stop being generic.",
+  },
+  {
+    num: 3,
+    title: "Reset a chat when it drifts",
+    description:
+      "The one-liner that pulls long chats back on track without starting over.",
+  },
+  {
+    num: 4,
+    title: "Brief AI before you ask, not after",
+    description:
+      "Set it up once at the top so every answer is already shaped the way you need.",
+  },
+  {
+    num: 5,
+    title: "Turn answers into shippable output",
+    description:
+      "End every session with something you could actually send, post, or do.",
+  },
+];
+
+export const TYPE_HIGHLIGHTED_WEEKS: Record<QuizType, number[]> = {
+  blank_slate: [1, 2],
+  organized_starter: [1, 3, 4],
+  curious_tinkerer: [2, 3],
+  ready_builder: [4, 5],
+};
+
+// ── Legacy insight/action libraries ───────────────────────
+// These powered the old "key insights" + "your next moves" blocks.
+// The new UI reads surfaceParagraph + stakes + tryThisWeek instead.
+// Kept (unused) so a regression can revert cleanly. Safe to delete
+// once the new results layout ships to prod.
 
 interface InsightRule {
   condition: (answers: QuizAnswers, scores: QuizScores) => boolean;
@@ -647,6 +757,79 @@ function selectActions(
   ];
 }
 
+// ── "Two things to try before Week 1" ──────────────────────
+// Replaces the old generic insights/actions for the UI. Each archetype
+// gets a default pair that previews a session build without teaching it.
+// Friction/goal can swap one item for a more specific variant.
+//
+// IMPORTANT: Ready Builder's default #1 was rewritten to avoid
+// pre-teaching Session 4 (the role/rules/format template). It now asks
+// for a messy paragraph — the learner feels the need without building
+// the artifact.
+
+const TRY_THIS_WEEK_DEFAULTS: Record<QuizType, [string, string]> = {
+  blank_slate: [
+    "Pick one real decision you're mulling today. Type it to ChatGPT with: \u201cAsk me three questions before you answer.\u201d Notice what changes.",
+    "Write five bullets about your business \u2014 what you do, who for, how you talk, what you're working toward, what makes you different. Save them. You'll use this again.",
+  ],
+  organized_starter: [
+    "Run one real decision through AI as a 10-minute back-and-forth \u2014 let it ask you three questions first. Notice how the answer changes when it actually knows the situation.",
+    "Write a 30-second version of your business: what you do, who you serve, how you talk, what makes you different, what you're chasing this quarter. Paste it above your next real chat. Watch generic become specific.",
+  ],
+  curious_tinkerer: [
+    "Write five bullets about your business and paste them at the top of your next real chat. Watch the answers stop being generic.",
+    "Next time a long chat starts drifting, stop and type: \u201cQuick reset. Here's the goal: ___. Here's what we've locked in: ___. Here's what I need next: ___.\u201d Costs nothing. Works every time.",
+  ],
+  ready_builder: [
+    "Take your most-used AI prompt today. Write one messy paragraph on who AI should be acting as, what it should push back on, and what shape you want the answer in. Don't polish it \u2014 you'll refine it later.",
+    "Add one line to the end of your next real chat: \u201cEnd every substantive response with (1) what I should do right now, (2) what's blocking me, (3) one thing I could ship today.\u201d Watch AI stop being a commentator.",
+  ],
+};
+
+// Overrides keyed on friction/goal — these replace the SECOND item only,
+// so each archetype's identity-building #1 (context / reset / briefing)
+// stays intact.
+function tryThisWeekOverride(
+  answers: QuizAnswers,
+  type: QuizType
+): string | null {
+  const friction = answers.friction?.selected ?? [];
+  const goal = answers.ai_goal?.selected?.[0];
+
+  // Friction-specific (apply to any archetype)
+  if (friction.includes("email_admin")) {
+    return "Paste your last three sent emails into Claude or ChatGPT and ask: \u201crewrite these to be clearer and a bit shorter.\u201d Compare. You'll feel the upgrade in 60 seconds.";
+  }
+  if (friction.includes("content_creation")) {
+    return "Record a 5-minute voice memo about something you know well. Paste the transcript into AI with: \u201cturn this into 3 social posts and one short email, in my voice.\u201d Notice which outputs sound like you \u2014 that's your starting prompt.";
+  }
+  if (friction.includes("follow_up")) {
+    return "Open one lead that went cold this month. Ask AI: \u201cdraft a 2-line check-in that doesn't sound like a salesperson.\u201d Send it. See what comes back.";
+  }
+
+  // Goal-specific
+  if (goal === "free_time_personal") {
+    return "List the three tasks that kept you working past when you wanted to stop today. Pick the one with no judgment involved. Ask AI to do it for you tomorrow. Log the time saved.";
+  }
+  if (goal === "highest_best_use" && type === "ready_builder") {
+    return "Next to every task on your calendar this week, jot one letter: B (your brain), R (relationships), J (judgment), or \u2014 (none of those). Hand the \u2014 pile to AI and see what comes back.";
+  }
+
+  return null;
+}
+
+function selectTryThisWeek(
+  answers: QuizAnswers,
+  type: QuizType
+): [string, string] {
+  const defaults = TRY_THIS_WEEK_DEFAULTS[type];
+  const override = tryThisWeekOverride(answers, type);
+  if (override) {
+    return [defaults[0], override];
+  }
+  return defaults;
+}
+
 // ── Main Scoring Function ──────────────────────────────────
 
 export function calculateResults(answers: QuizAnswers): QuizResult {
@@ -661,12 +844,27 @@ export function calculateResults(answers: QuizAnswers): QuizResult {
     systemsMaturityMax: 7,
   };
 
+  const surfaceParagraph = TYPE_SURFACE_PARAGRAPH[type];
+  const stakes = TYPE_STAKES[type];
+  const proof = TYPE_PROOF[type];
+  const highlightedWeeks = TYPE_HIGHLIGHTED_WEEKS[type];
+  const tryThisWeek = selectTryThisWeek(answers, type);
+
   return {
     scores,
     type,
     typeLabel: info.label,
     typeDescription: info.description,
-    insights: selectInsights(answers, scores),
-    actions: selectActions(answers, scores, type),
+    surfaceParagraph,
+    stakes,
+    proof,
+    phase1Arc: PHASE1_ARC,
+    highlightedWeeks,
+    tryThisWeek,
+    // Back-compat for the Google Apps Script webhook: mirror the new
+    // fields into the old shape so Brad's sheet keeps getting what
+    // it expects, now with richer content.
+    insights: [surfaceParagraph, stakes],
+    actions: tryThisWeek,
   };
 }

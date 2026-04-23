@@ -24,7 +24,7 @@ const STEPS: Step[] = [
   {
     num: "01",
     title: "TAKE THE QUIZ",
-    desc: "5 minutes, 13 questions. You\u2019ll get scored on two axes and mapped to one of four AI personas \u2014 plus two things to try this week. No email required.",
+    desc: "5 minutes, 14 questions. You\u2019ll get scored on two axes and mapped to one of four AI archetypes \u2014 plus a preview of your first 5 weeks and two small things to try before Week 1. No email required.",
     group: "free",
   },
   {

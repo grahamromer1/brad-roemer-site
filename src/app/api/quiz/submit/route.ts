@@ -11,6 +11,12 @@ interface QuizSubmission {
   scores?: { aiMaturity?: number; systemsMaturity?: number };
   type?: string;
   typeLabel?: string;
+  // Phase I-aligned fields (new)
+  surfaceParagraph?: string;
+  stakes?: string;
+  tryThisWeek?: string[];
+  highlightedWeeks?: number[];
+  // Legacy fields mirrored from the new ones for sheet back-compat
   insights?: string[];
   actions?: string[];
   timestamp?: string;

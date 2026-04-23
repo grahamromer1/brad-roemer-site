@@ -115,6 +115,11 @@ export default function QuizFlow() {
         scores: computed.scores,
         type: computed.type,
         typeLabel: computed.typeLabel,
+        surfaceParagraph: computed.surfaceParagraph,
+        stakes: computed.stakes,
+        tryThisWeek: computed.tryThisWeek,
+        highlightedWeeks: computed.highlightedWeeks,
+        // legacy mirrors for back-compat with existing sheet columns
         insights: computed.insights,
         actions: computed.actions,
         timestamp: new Date().toISOString(),
@@ -266,7 +271,7 @@ export default function QuizFlow() {
                 Where do you stand with AI?
               </h1>
               <p className="font-mono text-xs md:text-sm text-text-dim">
-                5 minutes. 13 questions. No email required.
+                5 minutes. 14 questions. No email required.
               </p>
               <p className="font-sans text-text-secondary text-sm md:text-base leading-relaxed">
                 You&apos;ll get a personalized snapshot of where you are with

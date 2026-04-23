@@ -67,7 +67,20 @@ export default function QuizResults({
   answers,
   submitStatus,
 }: QuizResultsProps) {
-  const { scores, type, typeLabel, typeDescription, insights, actions } = result;
+  const {
+    scores,
+    type,
+    typeLabel,
+    typeDescription,
+    surfaceParagraph,
+    stakes,
+    proof,
+    phase1Arc,
+    highlightedWeeks,
+    tryThisWeek,
+  } = result;
+
+  const highlightedSet = new Set(highlightedWeeks);
 
   const [captureEmail, setCaptureEmail] = useState("");
   const [captureSubmitting, setCaptureSubmitting] = useState(false);
@@ -113,8 +126,13 @@ export default function QuizResults({
           scores,
           type,
           typeLabel,
-          insights,
-          actions,
+          surfaceParagraph,
+          stakes,
+          tryThisWeek,
+          highlightedWeeks,
+          // legacy mirrors for back-compat with existing sheet columns
+          insights: result.insights,
+          actions: result.actions,
           timestamp: new Date().toISOString(),
         }),
       });
@@ -177,6 +195,10 @@ export default function QuizResults({
           <p className="font-sans text-text-secondary text-base md:text-lg leading-relaxed max-w-xl mx-auto">
             {typeDescription}
           </p>
+          <p className="font-mono text-xs text-text-dim pt-1">
+            // about 5 weeks, ~30 min a week of reading + one small thing to
+            try between sessions.
+          </p>
         </div>
 
         {/* ── 2. AI Snapshot ── */}
@@ -222,47 +244,101 @@ export default function QuizResults({
           </div>
         </div>
 
-        {/* ── 3. Two Key Insights ── */}
-        <div className="space-y-4">
+        {/* ── 3. What's running under the surface ── */}
+        <div className="space-y-3">
           <h2 className="font-mono text-sm text-text-primary font-bold">
-            <span className="text-accent-amber">[!]</span> key insights
+            <span className="text-accent-cyan">//</span> what&apos;s running
+            under the surface
           </h2>
-          {insights.map((insight, i) => (
-            <div
-              key={i}
-              className="rounded-lg border border-border-terminal bg-bg-surface p-5"
-            >
-              <p className="font-mono text-xs text-accent-amber mb-2">
-                insight {i + 1}
-              </p>
-              <p className="font-sans text-text-secondary text-sm leading-relaxed">
-                {insight}
-              </p>
-            </div>
-          ))}
+          <div className="rounded-lg border border-border-terminal bg-bg-surface p-5 space-y-4">
+            <p className="font-sans text-text-secondary text-sm md:text-base leading-relaxed">
+              {surfaceParagraph}
+            </p>
+            <p className="font-sans text-text-primary text-sm md:text-base leading-relaxed border-l-2 border-accent-amber pl-3">
+              <span
+                className="font-mono text-accent-amber"
+                aria-hidden="true"
+              >
+                [!]
+              </span>{" "}
+              {stakes}
+            </p>
+          </div>
         </div>
 
-        {/* ── 4. Two High-Leverage Actions ── */}
-        <div className="space-y-4">
+        {/* ── 4. Your first 5 weeks at a glance ── */}
+        <div className="space-y-3">
           <h2 className="font-mono text-sm text-text-primary font-bold">
-            <span className="text-accent-green">[&gt;]</span> your next moves
+            <span className="text-accent-cyan">//</span> your first 5 weeks at
+            a glance
           </h2>
-          {actions.map((action, i) => (
+          <p className="font-mono text-xs text-text-dim">
+            // highlighted weeks are especially high-leverage for a{" "}
+            {typeLabel.toLowerCase()}.
+          </p>
+          <ul className="space-y-2" role="list">
+            {phase1Arc.map((week) => {
+              const isHighlighted = highlightedSet.has(week.num);
+              return (
+                <li
+                  key={week.num}
+                  className={`rounded-lg p-4 ${
+                    isHighlighted
+                      ? "border-l-4 border-l-accent-green border-y border-r border-border-terminal bg-bg-surface/80"
+                      : "border border-border-terminal bg-bg-surface"
+                  }`}
+                >
+                  <div className="flex items-baseline gap-3">
+                    <span
+                      className={`font-mono text-sm font-bold shrink-0 ${
+                        isHighlighted ? "text-accent-green" : "text-text-dim"
+                      }`}
+                    >
+                      Week {week.num}
+                    </span>
+                    <div className="min-w-0 flex-1">
+                      <p
+                        className={`font-mono text-sm md:text-base font-bold uppercase tracking-wide ${
+                          isHighlighted
+                            ? "text-text-primary"
+                            : "text-text-secondary"
+                        }`}
+                      >
+                        {week.title}
+                      </p>
+                      <p className="font-sans text-text-secondary text-sm leading-relaxed mt-1">
+                        {week.description}
+                      </p>
+                    </div>
+                  </div>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+
+        {/* ── 5. Two things to try before Week 1 ── */}
+        <div className="space-y-3">
+          <h2 className="font-mono text-sm text-text-primary font-bold">
+            <span className="text-accent-green">[&gt;]</span> two things to try
+            before week 1 fires
+          </h2>
+          {tryThisWeek.map((item, i) => (
             <div
               key={i}
               className="rounded-lg border border-accent-green/20 bg-accent-green/5 p-5"
             >
               <p className="font-mono text-xs text-accent-green mb-2">
-                action {i + 1}
+                #{i + 1}
               </p>
               <p className="font-sans text-text-primary text-sm leading-relaxed">
-                {action}
+                {item}
               </p>
             </div>
           ))}
         </div>
 
-        {/* ── 5. Primary CTA ── */}
+        {/* ── 6. Primary CTA + secondary fit-call ── */}
         <div className="rounded-lg border border-accent-green bg-bg-surface p-6 md:p-8 text-center space-y-4">
           <p className="font-mono text-xs text-accent-cyan uppercase tracking-wider">
             next step
@@ -270,47 +346,39 @@ export default function QuizResults({
           <p className="font-sans text-text-secondary text-sm md:text-base leading-relaxed">
             You&apos;re a{" "}
             <span className="text-accent-green font-semibold">{typeLabel}</span>.
-            0to1.AI is a month-to-month program built to take you from here
-            to confidently applying AI to your business — one curated weekly
-            drop, one monthly call, one real skill at a time.
+            Phase I is the 5-week foundation above. Month-to-month, cancel
+            anytime.
           </p>
-          <p className="font-sans text-text-primary text-sm md:text-base leading-relaxed">
-            Start with a{" "}
-            <span className="text-accent-green font-semibold">
-              free 15-min intro call
-            </span>
-            . We&apos;ll review your quiz results together and figure out if it&apos;s
-            a fit. No pressure, no sales pitch.
-          </p>
-          <a
-            href="/#book"
-            onClick={() =>
-              track(EVENTS.cta_clicked, {
-                cta: "book_intro_call",
-                location: "results_primary",
-                result_type: type,
-              })
-            }
-            className="inline-flex items-center justify-center px-8 py-4 rounded-lg font-mono text-base font-semibold transition-all duration-200 min-h-[44px] bg-accent-green text-bg-primary hover:scale-[1.02] hover:shadow-[0_0_20px_rgba(74,222,128,0.3)]"
-          >
-            Book a Free Intro Call
-          </a>
-          <p className="font-mono text-xs text-text-dim pt-1">
-            // or see the{" "}
+          <div className="flex flex-col sm:flex-row gap-3 items-stretch sm:items-center justify-center">
             <a
               href="/#services"
               onClick={() =>
                 track(EVENTS.cta_clicked, {
-                  cta: "see_full_plan",
+                  cta: "start_phase_1",
+                  location: "results_primary",
+                  result_type: type,
+                })
+              }
+              className="inline-flex items-center justify-center px-8 py-4 rounded-lg font-mono text-base font-semibold transition-all duration-200 min-h-[44px] bg-accent-green text-bg-primary hover:scale-[1.02] hover:shadow-[0_0_20px_rgba(74,222,128,0.3)]"
+            >
+              Start Phase I &mdash; $295/month
+            </a>
+            <a
+              href="/#book"
+              onClick={() =>
+                track(EVENTS.cta_clicked, {
+                  cta: "book_fit_call",
                   location: "results_secondary",
                   result_type: type,
                 })
               }
-              className="underline decoration-dotted underline-offset-2 hover:text-text-secondary"
+              className="inline-flex items-center justify-center px-6 py-3 rounded-lg font-mono text-sm transition-all duration-200 min-h-[44px] border border-border-terminal text-text-primary hover:border-accent-green hover:text-accent-green"
             >
-              full plan
-            </a>{" "}
-            first — $295/mo, cancel anytime.
+              Not sure yet? Book a 15-min fit call
+            </a>
+          </div>
+          <p className="font-mono text-xs text-text-dim pt-1 leading-relaxed">
+            // {proof}
           </p>
         </div>
 
