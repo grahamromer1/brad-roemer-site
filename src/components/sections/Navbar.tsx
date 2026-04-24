@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useScrollSpy } from "@/components/hooks/useScrollSpy";
 import { EVENTS, track } from "@/lib/analytics";
@@ -88,9 +89,18 @@ export default function Navbar() {
       <nav className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between" aria-label="Main navigation">
         <button
           onClick={() => scrollTo("hero")}
-          className="font-mono text-sm md:text-base"
+          className="font-mono text-sm md:text-base flex items-center gap-2"
           aria-label="0to1.AI — back to top"
         >
+          <Image
+            src="/logo.png"
+            alt=""
+            width={28}
+            height={28}
+            priority
+            className="h-7 w-7 rounded-md"
+            aria-hidden="true"
+          />
           <span aria-hidden="true">
             <span className="text-accent-green">~/</span>
             <span className="text-text-primary">0to1</span>

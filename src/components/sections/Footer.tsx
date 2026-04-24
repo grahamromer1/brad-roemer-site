@@ -1,3 +1,4 @@
+import Image from "next/image";
 import SectionDivider from "@/components/ui/SectionDivider";
 
 export default function Footer() {
@@ -6,6 +7,19 @@ export default function Footer() {
       <SectionDivider />
 
       <div className="max-w-3xl mx-auto text-center">
+        <a
+          href="#hero"
+          className="inline-block mb-5 opacity-85 hover:opacity-100 transition-opacity"
+          aria-label="0to1.AI — back to top"
+        >
+          <Image
+            src="/logo.png"
+            alt="0to1.AI"
+            width={56}
+            height={56}
+            className="h-14 w-14 rounded-xl"
+          />
+        </a>
         <p className="font-mono text-text-secondary text-sm mb-1">
           &copy; 2026 0to1.AI. All rights reserved.
         </p>
