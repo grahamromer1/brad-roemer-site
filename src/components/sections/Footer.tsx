@@ -17,7 +17,7 @@ export default function Footer() {
             alt="0to1.AI"
             width={56}
             height={56}
-            className="h-14 w-14 rounded-xl"
+            className="h-14 w-14"
           />
         </a>
         <p className="font-mono text-text-secondary text-sm mb-1">

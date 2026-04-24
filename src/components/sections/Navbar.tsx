@@ -98,7 +98,7 @@ export default function Navbar() {
             width={28}
             height={28}
             priority
-            className="h-7 w-7 rounded-md"
+            className="h-7 w-7"
             aria-hidden="true"
           />
           <span aria-hidden="true">
