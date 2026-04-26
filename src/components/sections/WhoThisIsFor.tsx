@@ -11,7 +11,6 @@ const BUYERS = [
   "Bookkeepers and small accounting firms",
   "Agency owners with 2–10 employees",
   "Healthcare and wellness practice owners",
-  "Trade business owners ($500k–$5M)",
   "Other operators ready to install AI in their business",
 ];
 
@@ -34,11 +33,11 @@ export default function WhoThisIsFor() {
         <div className="fade-in-up">
           <TerminalWindow filename="who-this-is-for.md">
             <p className="font-sans text-text-primary text-base md:text-lg leading-relaxed mb-5 italic">
-              Built for revenue-generating operators running $200k–$2M
-              businesses.
+              Built for revenue-generating operators and small business
+              owners.
             </p>
             <p className="font-sans text-text-secondary text-base leading-relaxed mb-3">
-              Common 0to1 clients include:
+              Ideal 0to1 clients include:
             </p>
             <ul className="space-y-1.5" role="list">
               {BUYERS.map((b) => (
@@ -56,8 +55,8 @@ export default function WhoThisIsFor() {
           </TerminalWindow>
 
           <p className="font-mono text-xs text-text-dim mt-6">
-            // not for: hobbyists, the AI-curious without a business,
-            engineers building their own stack.
+            // probably not for: hobbyists, the AI-curious without a
+            business, engineers building their own stack.
           </p>
         </div>
       </div>

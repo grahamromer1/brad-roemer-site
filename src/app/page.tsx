@@ -7,7 +7,6 @@ import OutcomeLadder from "@/components/sections/OutcomeLadder";
 import Process from "@/components/sections/Process";
 import BuildLibrary from "@/components/sections/BuildLibrary";
 import Pricing from "@/components/sections/Pricing";
-import LongTermArc from "@/components/sections/LongTermArc";
 import About from "@/components/sections/About";
 import Proof from "@/components/sections/Proof";
 import Booking from "@/components/sections/Booking";
@@ -32,8 +31,6 @@ export default function Home() {
         <BuildLibrary />
         <SectionDivider />
         <Pricing />
-        <SectionDivider />
-        <LongTermArc />
         <SectionDivider />
         <About />
         <SectionDivider />

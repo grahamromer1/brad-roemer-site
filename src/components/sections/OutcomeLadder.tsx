@@ -11,7 +11,7 @@ interface Rung {
 const RUNGS: Rung[] = [
   {
     label: "Month 1 — Foundation.",
-    body: "5 sessions teach you to brief AI like an operator, not a tinkerer. By the end of the month, AI is doing real work for you — not just answering questions.",
+    body: "5 sessions teach you to leverage AI as a system you operate — not a chatbot you query. By the end of the month, you’re using AI for higher-stakes work that actually moves your business.",
   },
   {
     label: "Month 2 — Workflows operating.",
@@ -68,21 +68,6 @@ export default function OutcomeLadder() {
           ))}
         </ol>
 
-        <div
-          className="fade-in-up rounded-lg border border-accent-green/40 bg-accent-green/[0.04] p-5 md:p-6"
-          style={{ transitionDelay: "450ms" }}
-        >
-          <p className="font-mono text-xs text-accent-green uppercase tracking-wider mb-3">
-            // why it compounds
-          </p>
-          <p className="font-sans text-text-primary text-base md:text-lg leading-relaxed italic">
-            Your AI layer gets sharper every month. Brad knows your business
-            better. The workflows know your customers better. The system
-            knows your patterns better. This is the part that doesn’t show
-            up on a feature list but is why a year in feels different than
-            a month in.
-          </p>
-        </div>
       </div>
     </section>
   );

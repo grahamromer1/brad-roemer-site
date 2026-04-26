@@ -21,12 +21,12 @@ const PROBLEMS = [
   },
   {
     title:
-      "Your competitors are quietly installing AI workflows that compound month over month. You don’t see it on their websites — you’ll feel it in 12 months when they’re operating at a different level.",
+      "Your competitors are quietly making their businesses AI-native. You don’t see it on their websites — you’ll feel it in 12 months when they’re operating at a different level.",
     desc: "This isn’t FOMO. It’s recognition. The operators who install AI now will run different businesses in 18 months.",
   },
   {
     title:
-      "You don’t need more AI content. You need someone whose job it is to install AI in YOUR business.",
+      "You don’t need more AI content. You need someone whose job it is to teach you to install AI in your business.",
     desc: "That’s the gap. Not knowledge — installation. Workflows shipped, not articles read.",
   },
 ];

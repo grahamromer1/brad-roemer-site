@@ -17,21 +17,23 @@ interface Tier {
   bullets: string[];
   ctaLabel: string;
   ctaEvent: string;
-  recommended?: boolean;
+  /** Visually emphasized card (border + glow). */
+  emphasized?: "cyan" | "green";
 }
 
 const TIERS: Tier[] = [
   {
     id: "founding",
     title: "Founding Member",
-    badge: "20 of 20 spots — opening soon",
+    badge: "9 spots remain",
     badgeTone: "amber",
-    price: "$1,470 paid in full",
-    subline: "Then $245/mo locked for life",
+    price: "$245 / month",
+    subline: "Locked for life · 6 months paid in full ($1,470)",
     fineLine: "// 6-month commitment + 30-day money-back",
     bullets: [
       "Lifetime $245/mo rate after the initial 6 months",
       "Everything in the Monthly tier",
+      "Up to 4 Phase II builds per week (vs 2 in Monthly)",
       "Founding-member status and recognition",
       "First access to new builds and infrastructure lessons (alongside Pro members)",
     ],
@@ -44,19 +46,19 @@ const TIERS: Tier[] = [
     badge: "default",
     badgeTone: "cyan",
     price: "$295 / month",
-    subline: "Or $2,950/yr — save $590 (2 months free)",
-    fineLine: "// skip-anytime monthly · pause anytime",
+    subline: "Skip-anytime monthly · pause anytime",
+    fineLine: "// the standard tier — month to month",
     bullets: [
       "Phase I: 5 foundation sessions",
-      "Phase II: 2 workflow builds per week",
+      "Phase II: 2 workflow and infrastructure builds per week",
       "Monthly 30-min strategy call with Brad",
-      "Async team access — reply within days, not weeks",
+      "Async 0to1.AI team access",
       "100+ workflow library + new builds added weekly",
-      "Infrastructure lessons (Claude, ChatGPT, Google AI, GitHub, Vercel, more)",
       "Personal Notion knowledge base",
     ],
     ctaLabel: "Start Monthly",
     ctaEvent: "monthly_signup",
+    emphasized: "cyan",
   },
   {
     id: "pro",
@@ -64,20 +66,18 @@ const TIERS: Tier[] = [
     badge: "recommended",
     badgeTone: "green",
     price: "$495 / month",
-    subline: "Or $4,950/yr — save $990 (2 months free)",
-    fineLine: "// for operators wanting heavier cadence",
+    subline: "For operators wanting heavier cadence",
+    fineLine: "// pause anytime",
     bullets: [
       "Everything in Monthly, plus:",
       "Bi-weekly 1:1 strategy calls (vs monthly)",
-      "Concierge channel — direct Slack/Loom team access",
+      "Concierge channel — direct Discord/Loom team access",
       "Quarterly Build Sprint — 60 min live build with Brad",
       "First access to new builds and infrastructure lessons (1 week before Monthly)",
-      "Custom workflow design every 6 months",
-      "4 Phase II builds per week (vs 2 in Monthly)",
+      "Up to 4 Phase II builds per week (vs 2 in Monthly)",
     ],
     ctaLabel: "Start Pro",
     ctaEvent: "pro_signup",
-    recommended: true,
   },
 ];
 
@@ -93,14 +93,20 @@ function badgeClasses(tone: Tier["badgeTone"]) {
   }
 }
 
-function TierCard({ tier, delayIndex }: { tier: Tier; delayIndex: number }) {
-  const cardBorder = tier.recommended
-    ? "border-accent-green shadow-[0_0_24px_rgba(74,222,128,0.12)]"
-    : "border-border-terminal";
+function emphasisClasses(tier: Tier) {
+  if (tier.emphasized === "cyan") {
+    return "border-accent-cyan shadow-[0_0_24px_rgba(34,211,238,0.10)]";
+  }
+  if (tier.emphasized === "green") {
+    return "border-accent-green shadow-[0_0_24px_rgba(74,222,128,0.12)]";
+  }
+  return "border-border-terminal";
+}
 
+function TierCard({ tier, delayIndex }: { tier: Tier; delayIndex: number }) {
   return (
     <div
-      className={`fade-in-up rounded-lg border ${cardBorder} bg-bg-surface overflow-hidden flex flex-col`}
+      className={`fade-in-up rounded-lg border ${emphasisClasses(tier)} bg-bg-surface overflow-hidden flex flex-col`}
       style={{ transitionDelay: `${delayIndex * 100}ms` }}
     >
       {/* terminal chrome */}
@@ -169,7 +175,7 @@ function TierCard({ tier, delayIndex }: { tier: Tier; delayIndex: number }) {
 
         <Button
           href="#book"
-          variant={tier.recommended ? "primary" : "secondary"}
+          variant={tier.emphasized === "cyan" ? "primary" : "secondary"}
           onClick={() =>
             track(EVENTS.cta_clicked, {
               cta: tier.ctaEvent,
@@ -184,6 +190,15 @@ function TierCard({ tier, delayIndex }: { tier: Tier; delayIndex: number }) {
     </div>
   );
 }
+
+const ADDONS: { label: string; value: string }[] = [
+  { label: "Extra 1:1 time beyond your monthly call", value: "$200/hr" },
+  {
+    label: "Build custom integrations, workflows and agents",
+    value: "project-priced",
+  },
+  { label: "In-person sessions (Southern California)", value: "TBD" },
+];
 
 export default function Pricing() {
   const ref = useScrollReveal<HTMLElement>();
@@ -204,7 +219,7 @@ export default function Pricing() {
         </div>
 
         {/* Team callout */}
-        <div className="fade-in-up" style={{ transitionDelay: "300ms" }}>
+        <div className="fade-in-up mb-8" style={{ transitionDelay: "300ms" }}>
           <TerminalWindow filename="teams.md">
             <p className="font-mono text-xs text-text-dim mb-3">
               // running a team or small business?
@@ -231,9 +246,42 @@ export default function Pricing() {
           </TerminalWindow>
         </div>
 
+        {/* Add-ons */}
+        <div className="fade-in-up" style={{ transitionDelay: "400ms" }}>
+          <TerminalWindow filename="add-ons.md">
+            <div className="flex flex-wrap items-start justify-between gap-3 mb-1">
+              <p className="font-mono text-text-primary text-base md:text-lg font-bold">
+                Go Deeper
+              </p>
+              <span className="font-mono text-[10px] uppercase tracking-wider px-2 py-1 rounded border border-accent-cyan/40 bg-accent-cyan/5 text-accent-cyan">
+                [add-ons]
+              </span>
+            </div>
+            <p className="font-mono text-xs text-text-dim mb-4">
+              // available to active clients
+            </p>
+            <div className="h-px bg-border-terminal mb-4" aria-hidden="true" />
+            <ul className="space-y-3" role="list">
+              {ADDONS.map((a) => (
+                <li
+                  key={a.label}
+                  className="flex items-baseline justify-between gap-4"
+                >
+                  <p className="font-sans text-sm text-text-primary leading-snug">
+                    {a.label}
+                  </p>
+                  <p className="font-mono text-xs text-accent-green whitespace-nowrap">
+                    {a.value}
+                  </p>
+                </li>
+              ))}
+            </ul>
+          </TerminalWindow>
+        </div>
+
         <p className="font-mono text-text-dim text-sm text-center mt-10">
-          // not sure if this fits? the intro call is free &mdash; come
-          curious, leave with a plan.
+          // alumni rate available to clients after 12 months · not sure if
+          this fits? the intro call is free.
         </p>
       </div>
     </section>

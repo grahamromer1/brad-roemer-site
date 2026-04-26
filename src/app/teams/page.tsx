@@ -66,7 +66,7 @@ export default function TeamsPage() {
                     "Personal Phase I onboarding — own pace (advanced members fly through, beginners take their time)",
                     "Personal Phase II curation — pick builds based on YOUR role and YOUR work",
                     "Personal Notion archive of their own builds",
-                    "Personal concierge access — email/Slack the team channel directly",
+                    "Personal concierge access — email/Discord the team channel directly",
                   ].map((item) => (
                     <li
                       key={item}
@@ -138,7 +138,7 @@ export default function TeamsPage() {
               <p className="font-mono text-xs text-text-dim mb-5">
                 // up to 10 seats included · 5-seat minimum
               </p>
-              <Button href="mailto:brad@get0to1.ai?subject=0to1%20Team%20signup">
+              <Button href="mailto:info@get0to1.ai?subject=0to1%20Team%20signup">
                 Get started <span aria-hidden="true">&rarr;</span>
               </Button>
             </TerminalWindow>
@@ -153,11 +153,12 @@ export default function TeamsPage() {
             </p>
             <p className="font-sans text-text-primary text-base md:text-lg leading-relaxed italic">
               Teams come in mixed. That&apos;s why each team member moves at
-              their own pace through Phase I &mdash; your veterans complete
-              it in days, your beginners take their time. Phase II is fully
-              personalized too &mdash; each member picks their own builds
-              based on their role and where their work is leaking time. The
-              team layer adds coordination, not lockstep pacing.
+              their own pace through Phase I &mdash; your veterans may
+              complete it in one day, your beginners take their time. Phase
+              II is fully personalized too &mdash; each member picks their
+              own builds based on their role and where their work is
+              leaking time. The team layer adds coordination, not lockstep
+              pacing.
             </p>
           </div>
         </section>
@@ -172,10 +173,10 @@ export default function TeamsPage() {
               <p className="font-sans text-text-primary text-base md:text-lg leading-relaxed mb-3">
                 Larger team or specific integration needs? Email{" "}
                 <a
-                  href="mailto:brad@get0to1.ai"
+                  href="mailto:info@get0to1.ai"
                   className="text-accent-green hover:underline"
                 >
-                  brad@get0to1.ai
+                  info@get0to1.ai
                 </a>{" "}
                 to discuss.
               </p>
@@ -183,25 +184,6 @@ export default function TeamsPage() {
                 // no published price — scoped per engagement
               </p>
             </TerminalWindow>
-          </div>
-        </section>
-
-        {/* Case studies placeholder */}
-        <section className="px-4 sm:px-6 mt-20 md:mt-28">
-          <div className="max-w-3xl mx-auto">
-            <p className="font-mono text-xs text-accent-cyan uppercase tracking-wider mb-4">
-              // ── case studies ──
-            </p>
-            <p className="font-sans text-text-secondary text-base md:text-lg leading-relaxed italic">
-              First three team clients featured here. Email{" "}
-              <a
-                href="mailto:brad@get0to1.ai"
-                className="text-accent-green hover:underline"
-              >
-                brad@get0to1.ai
-              </a>{" "}
-              if you want to be one of them.
-            </p>
           </div>
         </section>
 
@@ -223,15 +205,15 @@ export default function TeamsPage() {
                 },
                 {
                   q: "What about teams larger than 10?",
-                  a: "Email brad@get0to1.ai. Larger team engagements are scoped individually.",
+                  a: "Email info@get0to1.ai. Larger team engagements are scoped individually.",
                 },
                 {
                   q: "Can we add seats mid-cycle?",
-                  a: "Yes — pro-rated. Email june@get0to1.ai to add a seat anytime.",
+                  a: "Yes — email the team to add a seat anytime.",
                 },
                 {
                   q: "Do you provide invoicing, W-9, or MSA paperwork?",
-                  a: "Available on request. Email brad@get0to1.ai and we’ll send what your finance team needs.",
+                  a: "We will send invoicing and receipts. Further documents available upon request.",
                 },
               ].map((item) => (
                 <div

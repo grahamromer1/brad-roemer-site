@@ -24,7 +24,7 @@ export default function TerminalPrompt({
       <h2 className="font-mono text-lg md:text-xl">
         {heading ? <span className="sr-only">{heading}. </span> : null}
         <span aria-hidden={heading ? "true" : undefined}>
-          <span className="text-accent-green">~/brad $</span>{" "}
+          <span className="text-accent-green">~/0to1.AI $</span>{" "}
           <span className="text-text-primary">{command}</span>
         </span>
       </h2>

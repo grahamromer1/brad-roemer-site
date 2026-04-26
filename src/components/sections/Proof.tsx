@@ -31,7 +31,8 @@ export default function Proof() {
         <blockquote className="fade-in-up border-l-2 border-accent-green pl-4 mb-8">
           <p className="font-mono text-xl md:text-2xl text-text-primary font-bold">
             &ldquo;Operators don&apos;t need more AI content. They need
-            someone whose job it is to install AI in their business.&rdquo;
+            someone to teach them how to install AI in their
+            business.&rdquo;
           </p>
         </blockquote>
 

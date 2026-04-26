@@ -39,8 +39,8 @@ const STEPS: Step[] = [
   },
   {
     num: "05",
-    title: "PHASE II: WORKFLOW INSTALLS",
-    desc: "After Phase I, you and Brad pick from the 100+ workflow library each month. New builds added weekly. Each install replaces real work in your business.",
+    title: "PHASE II: WORKFLOW & INFRASTRUCTURE BUILDS",
+    desc: "After Phase I, you and the 0to1.AI team pick from the 100+ workflow library each month — plus infrastructure lessons on the operator stack (Claude Code, Cowork, ChatGPT, Codex, GitHub, Vercel, n8n, and more). New builds added weekly. Each install replaces real work in your business.",
     group: "program",
   },
   {
@@ -51,14 +51,14 @@ const STEPS: Step[] = [
   },
   {
     num: "07",
-    title: "INFRASTRUCTURE LESSONS",
-    desc: "Get running on the operator stack: Claude Code, Cowork, ChatGPT, Codex, GitHub, Vercel, n8n, and more. Lessons added as the tools evolve.",
+    title: "ASYNC ACCESS",
+    desc: "Questions between calls? Send them anytime and get real, thoughtful answers from the 0to1.AI team — fast, personal, and specific to your situation.",
     group: "program",
   },
   {
     num: "08",
-    title: "ASYNC ACCESS",
-    desc: "Questions between calls? Send them anytime and get real, thoughtful answers from the 0to1.AI team — fast, personal, and specific to your situation.",
+    title: "COMMUNITY CONVERSATION",
+    desc: "Coming soon — a private space for 0to1 clients to swap builds, share what’s working, and trade notes on the tools and tactics that are actually moving the needle.",
     group: "program",
   },
 ];
@@ -104,8 +104,8 @@ export default function Process() {
           </p>
           <p className="font-sans text-text-secondary text-base md:text-lg leading-relaxed">
             Phase I installs the foundation. Phase II compounds month over
-            month &mdash; you and Brad pick the next install from a growing
-            library.
+            month &mdash; you and the 0to1.AI team pick the next install
+            from a growing library.
           </p>
         </div>
 

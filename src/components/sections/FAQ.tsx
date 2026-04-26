@@ -10,18 +10,18 @@ const FAQS: { q: string; a: string }[] = [
   },
   {
     q: "Why $1,470 upfront for Founding Members?",
-    a: "The upfront commitment ($245/mo × 6 months) is the filter. Founding Members get a lifetime rate that pays back in under 30 months and recognition as an early supporter. The 30-day money-back guarantee covers buyer regret.",
+    a: "The upfront commitment ($245/mo × 6 months) is the filter. Founding Members get a lifetime rate that pays back in under 30 months and recognition as an early supporter.",
   },
   {
     q: "Do you have a team plan?",
-    a: "Yes — 0to1 Team is built for small businesses with 5-10 person teams at $1,295/mo (or $3,495 paid quarterly). See team plans at /teams for full details. Larger teams can email brad@get0to1.ai for a custom conversation.",
+    a: "Yes — 0to1 Team is built for small businesses with 5-10 person teams at $1,295/mo (or $3,495 paid quarterly). See team plans at /teams for full details. Larger teams can email info@get0to1.ai for a custom conversation.",
   },
   {
     q: "I’m not technical at all. Is this for me?",
     a: "That’s exactly who this is for. Brad isn’t technical either — a real estate developer who taught himself. The whole program is built around translating AI into language and actions that make sense for non-technical operators.",
   },
   {
-    q: "I already use ChatGPT a bit. Is this too basic?",
+    q: "I already use Claude Cowork a bit. Is this too basic?",
     a: "No. Most clients are past the “what is AI” stage. Phase I teaches you to brief AI like an operator, not a tinkerer. Phase II is personalized to your business — you pick the next workflow build each month based on where time is leaking. The program meets advanced users where they are.",
   },
   {
@@ -33,12 +33,12 @@ const FAQS: { q: string; a: string }[] = [
     a: "Each Phase II build is designed to take 20–30 minutes for the install, plus whatever time you spend running it once it’s live. Most clients spend about 1–2 hours total per week. The strategy call is 30 minutes (Monthly) or bi-weekly 30 minutes (Pro). It’s designed to fit around running a business, not replace it.",
   },
   {
-    q: "Can I skip or pause?",
-    a: "Monthly and Pro tiers: yes — skip-anytime monthly, pause anytime. Founding Members commit to 6 months upfront ($1,470) and have a 30-day full money-back guarantee. After the initial 6 months, Founding Members are also skip-anytime at the locked $245/mo rate.",
+    q: "Can I pause?",
+    a: "Yes — pause anytime on Monthly and Pro tiers. Founding Members commit to 6 months upfront ($1,470) and have a 30-day full money-back guarantee. After the initial 6 months, Founding Members are also pause-anytime at the locked $245/mo rate.",
   },
   {
     q: "What happens on the intro call?",
-    a: "15 minutes. We look at where you are with AI, what’s most relevant to your situation, and whether the program is a good fit. You’ll leave with a next step either way — no pitch, no pressure.",
+    a: "15 minutes with Brad. We look at where you are with AI, what’s most relevant to your situation, and whether the program is a good fit. You’ll leave with a next step either way — no pitch, no pressure.",
   },
 ];
 
