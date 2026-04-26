@@ -93,9 +93,8 @@ export default function Process() {
     <section id="process" className="py-20 md:py-32 px-4 sm:px-6" ref={ref}>
       <div className="max-w-5xl mx-auto">
         <TerminalPrompt
-          command="./how-it-works --explain"
+          command="cat how-it-works.md"
           heading="How the 0to1.AI program works"
-          subheading="How it works"
         />
 
         <div className="fade-in-up max-w-2xl mb-10 space-y-2">

@@ -227,22 +227,34 @@ export default function Pricing() {
           subheading="What you get"
         />
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 items-stretch mb-12">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 items-stretch mb-20 md:mb-24">
           {TIERS.map((tier, i) => (
             <TierCard key={tier.id} tier={tier} delayIndex={i} />
           ))}
         </div>
 
         {/* Team callout */}
-        <div className="fade-in-up mb-8" style={{ transitionDelay: "300ms" }}>
+        <div
+          className="fade-in-up mb-16 md:mb-20"
+          style={{ transitionDelay: "300ms" }}
+        >
           <TerminalWindow filename="teams.md">
             <div className="flex flex-wrap items-start justify-between gap-3 mb-1">
               <p className="font-mono text-text-primary text-base md:text-lg font-bold">
                 Running a Team or Small Business
               </p>
-              <span className="font-mono text-[10px] uppercase tracking-wider px-2 py-1 rounded border border-accent-cyan/40 bg-accent-cyan/5 text-accent-cyan">
+              <a
+                href="/teams"
+                onClick={() =>
+                  track(EVENTS.cta_clicked, {
+                    cta: "see_team_plans",
+                    location: "pricing_badge",
+                  })
+                }
+                className="font-mono text-[10px] uppercase tracking-wider px-2 py-1 rounded border border-accent-cyan/40 bg-accent-cyan/5 text-accent-cyan transition-colors hover:bg-accent-cyan/15 hover:border-accent-cyan"
+              >
                 [teams]
-              </span>
+              </a>
             </div>
             <p className="font-mono text-xs text-text-dim mb-4">
               // built for small organizations leveling up together

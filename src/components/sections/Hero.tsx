@@ -17,10 +17,6 @@ export default function Hero() {
           </div>
 
           <div className="p-6 sm:p-10 md:p-14">
-            <p className="font-mono text-text-dim text-sm md:text-base mb-6">
-              <span className="text-accent-green">~/0to1 $</span> whatarewe
-            </p>
-
             <h1 className="font-mono text-4xl sm:text-5xl md:text-6xl font-bold text-text-primary mb-2">
               <span className="block">AI-curious to</span>
               <span className="block">AI-fluent.</span>

@@ -12,7 +12,7 @@ export default function Booking() {
     <section id="book" className="py-20 md:py-32 px-4 sm:px-6 bg-[#0F0F0F]" ref={ref}>
       <div className="max-w-3xl mx-auto">
         <TerminalPrompt
-          command="./book --intro-call"
+          command="cat book-intro-call.md"
           heading="Book a free intro call"
           subheading="15 minutes, free, no pitch"
         />

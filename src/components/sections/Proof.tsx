@@ -24,10 +24,6 @@ export default function Proof() {
           subheading="Why operators trust this"
         />
 
-        <p className="fade-in-up font-mono text-xs text-accent-cyan uppercase tracking-wider mb-6">
-          // what this looks like in practice
-        </p>
-
         <blockquote className="fade-in-up border-l-2 border-accent-green pl-4 mb-8">
           <p className="font-mono text-xl md:text-2xl text-text-primary font-bold">
             &ldquo;I built this program for myself first.&rdquo;

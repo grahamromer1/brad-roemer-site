@@ -150,8 +150,8 @@ export default function TeamsPage() {
                 </span>
               </div>
               <p className="font-mono text-sm text-text-secondary mb-1">
-                Or <span className="text-accent-green">$3,495</span> paid
-                quarterly &mdash; save $390 (~10% off)
+                Or <span className="text-accent-green">$3,495</span>{" "}
+                paid quarterly &mdash; save $390 (~10% off)
               </p>
               <p className="font-mono text-xs text-text-dim mb-5">
                 // up to 10 seats included · 5-seat minimum
@@ -181,7 +181,7 @@ export default function TeamsPage() {
                 to discuss.
               </p>
               <p className="font-mono text-xs text-text-dim">
-                // no published price — scoped per engagement
+                // tbd per engagement
               </p>
             </TerminalWindow>
           </div>

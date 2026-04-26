@@ -19,13 +19,27 @@ export default function TerminalPrompt({
   heading,
   subheading,
 }: TerminalPromptProps) {
+  // Split the command into the executable (first whitespace-separated token)
+  // and the remaining args, so we can render the verb in accent-green and the
+  // arg(s) — typically a filename like `problems.md` — in text-primary.
+  const trimmed = command.trim();
+  const firstSpace = trimmed.indexOf(" ");
+  const verb = firstSpace === -1 ? trimmed : trimmed.slice(0, firstSpace);
+  const rest = firstSpace === -1 ? "" : trimmed.slice(firstSpace + 1);
+
   return (
     <div className="mb-8">
       <h2 className="font-mono text-lg md:text-xl">
         {heading ? <span className="sr-only">{heading}. </span> : null}
         <span aria-hidden={heading ? "true" : undefined}>
           <span className="text-accent-green">~/0to1.AI $</span>{" "}
-          <span className="text-text-primary">{command}</span>
+          <span className="text-accent-green">{verb}</span>
+          {rest ? (
+            <>
+              {" "}
+              <span className="text-text-primary">{rest}</span>
+            </>
+          ) : null}
         </span>
       </h2>
       {subheading ? (
