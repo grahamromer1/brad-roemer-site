@@ -34,7 +34,7 @@ const FAQS: { q: string; a: string }[] = [
   },
   {
     q: "Can I pause?",
-    a: "Yes — pause anytime on Monthly and Pro tiers. Founding Members commit to 6 months upfront ($1,470) and have a 30-day full money-back guarantee. After the initial 6 months, Founding Members are also pause-anytime at the locked $245/mo rate.",
+    a: "Yes — pause anytime on Monthly and Pro tiers. Founding Members commit to 6 months upfront ($1,470). After the initial 6 months, Founding Members are also pause-anytime at the locked $245/mo rate.",
   },
   {
     q: "What happens on the intro call?",

@@ -9,9 +9,9 @@ const BUYERS = [
   "Insurance and financial advisors",
   "Coaches and consultants",
   "Bookkeepers and small accounting firms",
-  "Agency owners with 2–10 employees",
   "Healthcare and wellness practice owners",
-  "Other operators ready to install AI in their business",
+  "Small businesses with 2–10 employees",
+  "Any operator ready to install AI in their business",
 ];
 
 export default function WhoThisIsFor() {
@@ -32,12 +32,9 @@ export default function WhoThisIsFor() {
 
         <div className="fade-in-up">
           <TerminalWindow filename="who-this-is-for.md">
-            <p className="font-sans text-text-primary text-base md:text-lg leading-relaxed mb-5 italic">
-              Built for revenue-generating operators and small business
-              owners.
-            </p>
             <p className="font-sans text-text-secondary text-base leading-relaxed mb-3">
-              Ideal 0to1 clients include:
+              Built for revenue-generating operators and small business
+              owners. Ideal 0to1 clients include:
             </p>
             <ul className="space-y-1.5" role="list">
               {BUYERS.map((b) => (

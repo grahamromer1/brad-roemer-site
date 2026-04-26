@@ -104,8 +104,7 @@ export default function Process() {
           </p>
           <p className="font-sans text-text-secondary text-base md:text-lg leading-relaxed">
             Phase I installs the foundation. Phase II compounds month over
-            month &mdash; you and the 0to1.AI team pick the next install
-            from a growing library.
+            month.
           </p>
         </div>
 

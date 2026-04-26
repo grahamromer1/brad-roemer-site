@@ -21,7 +21,7 @@ export default function About() {
         <TerminalPrompt
           command="cat about.md"
           heading="About Brad Roemer"
-          subheading="Who built this"
+          subheading="Meet the founder"
         />
 
         <div className="fade-in-up font-sans text-text-secondary text-base md:text-lg leading-relaxed space-y-5 mb-10">

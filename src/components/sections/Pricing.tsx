@@ -29,7 +29,7 @@ const TIERS: Tier[] = [
     badgeTone: "amber",
     price: "$245 / month",
     subline: "Locked for life · 6 months paid in full ($1,470)",
-    fineLine: "// 6-month commitment + 30-day money-back",
+    fineLine: "// 6-month commitment",
     bullets: [
       "Lifetime $245/mo rate after the initial 6 months",
       "Everything in the Monthly tier",
@@ -46,8 +46,8 @@ const TIERS: Tier[] = [
     badge: "default",
     badgeTone: "cyan",
     price: "$295 / month",
-    subline: "Skip-anytime monthly · pause anytime",
-    fineLine: "// the standard tier — month to month",
+    subline: "The standard tier — month to month",
+    fineLine: "// pause anytime",
     bullets: [
       "Phase I: 5 foundation sessions",
       "Phase II: 2 workflow and infrastructure builds per week",
@@ -71,7 +71,7 @@ const TIERS: Tier[] = [
     bullets: [
       "Everything in Monthly, plus:",
       "Bi-weekly 1:1 strategy calls (vs monthly)",
-      "Concierge channel — direct Discord/Loom team access",
+      "Concierge Discord channel",
       "Quarterly Build Sprint — 60 min live build with Brad",
       "First access to new builds and infrastructure lessons (1 week before Monthly)",
       "Up to 4 Phase II builds per week (vs 2 in Monthly)",
@@ -173,19 +173,34 @@ function TierCard({ tier, delayIndex }: { tier: Tier; delayIndex: number }) {
           ))}
         </ul>
 
-        <Button
-          href="#book"
-          variant={tier.emphasized === "cyan" ? "primary" : "secondary"}
-          onClick={() =>
-            track(EVENTS.cta_clicked, {
-              cta: tier.ctaEvent,
-              location: "pricing",
-            })
-          }
-          className="w-full"
-        >
-          {tier.ctaLabel}
-        </Button>
+        {tier.emphasized === "cyan" ? (
+          <a
+            href="#book"
+            onClick={() =>
+              track(EVENTS.cta_clicked, {
+                cta: tier.ctaEvent,
+                location: "pricing",
+              })
+            }
+            className="w-full inline-flex items-center justify-center px-6 py-3 rounded-lg font-mono text-sm font-semibold transition-all duration-200 min-h-[44px] bg-accent-cyan text-bg-primary hover:scale-[1.02] hover:shadow-[0_0_20px_rgba(34,211,238,0.3)]"
+          >
+            {tier.ctaLabel}
+          </a>
+        ) : (
+          <Button
+            href="#book"
+            variant="secondary"
+            onClick={() =>
+              track(EVENTS.cta_clicked, {
+                cta: tier.ctaEvent,
+                location: "pricing",
+              })
+            }
+            className="w-full"
+          >
+            {tier.ctaLabel}
+          </Button>
+        )}
       </div>
     </div>
   );
@@ -221,9 +236,18 @@ export default function Pricing() {
         {/* Team callout */}
         <div className="fade-in-up mb-8" style={{ transitionDelay: "300ms" }}>
           <TerminalWindow filename="teams.md">
-            <p className="font-mono text-xs text-text-dim mb-3">
-              // running a team or small business?
+            <div className="flex flex-wrap items-start justify-between gap-3 mb-1">
+              <p className="font-mono text-text-primary text-base md:text-lg font-bold">
+                Running a Team or Small Business
+              </p>
+              <span className="font-mono text-[10px] uppercase tracking-wider px-2 py-1 rounded border border-accent-cyan/40 bg-accent-cyan/5 text-accent-cyan">
+                [teams]
+              </span>
+            </div>
+            <p className="font-mono text-xs text-text-dim mb-4">
+              // built for small organizations leveling up together
             </p>
+            <div className="h-px bg-border-terminal mb-4" aria-hidden="true" />
             <p className="font-sans text-text-primary text-base md:text-lg leading-relaxed mb-2">
               <span className="font-bold">0to1 Team</span> &mdash; for small
               businesses with 5–10 person teams. Phase I + Phase II library +
@@ -279,10 +303,6 @@ export default function Pricing() {
           </TerminalWindow>
         </div>
 
-        <p className="font-mono text-text-dim text-sm text-center mt-10">
-          // alumni rate available to clients after 12 months · not sure if
-          this fits? the intro call is free.
-        </p>
       </div>
     </section>
   );

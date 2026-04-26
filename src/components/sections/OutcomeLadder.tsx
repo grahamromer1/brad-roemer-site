@@ -19,15 +19,15 @@ const RUNGS: Rung[] = [
   },
   {
     label: "Months 3–6 — Compounding builds.",
-    body: "8–15 workflows running. You’re picking each new build based on where time is leaking and where revenue is being left on the table. The monthly strategy call keeps the next install pointed at the highest-leverage spot.",
+    body: "Multiple workflows running across the parts of your business that drain the most time. You’re picking each new build based on where time is leaking and where revenue is being left on the table. The monthly strategy call keeps the next install pointed at the highest-leverage spot.",
   },
   {
     label: "Months 6–12 — Compounding outcomes.",
-    body: "Workflows talk to each other. You’re operating differently. The goal at this stage: 5–10 hours/week of manual work replaced, with new capacity opened for outreach, follow-through, and revenue work you couldn’t reach before. Top line moves with the bottom line.",
+    body: "Workflows talk to each other. You’re operating differently. The goal at this stage: 10+ hours/week of manual work replaced, with new capacity opened for outreach, follow-through, and revenue work you couldn’t reach before. Top line moves with the bottom line.",
   },
   {
     label: "Month 12+ — Mature.",
-    body: "Your AI layer is doing its job. You shift to a lighter touch — quarterly check-ins, new builds when you want them.",
+    body: "Your AI layer is doing its job. You can shift to a lighter touch as an alumni monthly membership — quarterly check-ins, new builds when you want them.",
   },
   {
     label: "Month 24+ — AI R&D function.",

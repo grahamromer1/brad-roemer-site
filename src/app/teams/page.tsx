@@ -50,7 +50,7 @@ export default function TeamsPage() {
         {/* What you get */}
         <section className="px-4 sm:px-6 mt-20 md:mt-28">
           <div className="max-w-5xl mx-auto">
-            <p className="font-mono text-xs text-accent-cyan uppercase tracking-wider mb-4">
+            <p className="font-mono text-xs text-accent-green uppercase tracking-wider mb-4">
               // ── what you get ──
             </p>
             <h2 className="font-mono text-2xl md:text-3xl font-bold text-text-primary mb-8">
@@ -116,10 +116,28 @@ export default function TeamsPage() {
           </div>
         </section>
 
+        {/* Mixed experience */}
+        <section className="px-4 sm:px-6 mt-20 md:mt-28">
+          <div className="max-w-3xl mx-auto">
+            <p className="font-mono text-xs text-accent-green uppercase tracking-wider mb-4">
+              // ── mixed experience levels ──
+            </p>
+            <p className="font-sans text-text-primary text-base md:text-lg leading-relaxed italic">
+              Teams come in mixed. That&apos;s why each team member moves at
+              their own pace through Phase I &mdash; your veterans may
+              complete it in one day, your beginners take their time. Phase
+              II is fully personalized too &mdash; each member picks their
+              own builds based on their role and where their work is
+              leaking time. The team layer adds coordination, not lockstep
+              pacing.
+            </p>
+          </div>
+        </section>
+
         {/* Pricing */}
         <section className="px-4 sm:px-6 mt-20 md:mt-28">
           <div className="max-w-3xl mx-auto">
-            <p className="font-mono text-xs text-accent-cyan uppercase tracking-wider mb-4">
+            <p className="font-mono text-xs text-accent-green uppercase tracking-wider mb-4">
               // ── pricing ──
             </p>
             <TerminalWindow filename="team-pricing.md">
@@ -145,28 +163,10 @@ export default function TeamsPage() {
           </div>
         </section>
 
-        {/* Mixed experience */}
-        <section className="px-4 sm:px-6 mt-20 md:mt-28">
-          <div className="max-w-3xl mx-auto">
-            <p className="font-mono text-xs text-accent-cyan uppercase tracking-wider mb-4">
-              // ── mixed experience levels ──
-            </p>
-            <p className="font-sans text-text-primary text-base md:text-lg leading-relaxed italic">
-              Teams come in mixed. That&apos;s why each team member moves at
-              their own pace through Phase I &mdash; your veterans may
-              complete it in one day, your beginners take their time. Phase
-              II is fully personalized too &mdash; each member picks their
-              own builds based on their role and where their work is
-              leaking time. The team layer adds coordination, not lockstep
-              pacing.
-            </p>
-          </div>
-        </section>
-
         {/* Larger teams */}
         <section className="px-4 sm:px-6 mt-20 md:mt-28">
           <div className="max-w-3xl mx-auto">
-            <p className="font-mono text-xs text-accent-cyan uppercase tracking-wider mb-4">
+            <p className="font-mono text-xs text-accent-green uppercase tracking-wider mb-4">
               // ── larger teams ──
             </p>
             <TerminalWindow filename="larger-teams.md">
@@ -190,7 +190,7 @@ export default function TeamsPage() {
         {/* FAQ */}
         <section className="px-4 sm:px-6 mt-20 md:mt-28">
           <div className="max-w-3xl mx-auto">
-            <p className="font-mono text-xs text-accent-cyan uppercase tracking-wider mb-4">
+            <p className="font-mono text-xs text-accent-green uppercase tracking-wider mb-4">
               // ── team FAQ ──
             </p>
             <div className="space-y-8">
