@@ -10,21 +10,13 @@ interface Step {
   title: string;
   desc: string;
   group: StepGroup;
-  /** Optional terminal-style bullet list, rendered with → cyan prefixes. */
-  bullets?: string[];
-  /** Optional lead-in line shown above bullets. */
-  bulletsLead?: string;
-  /** Optional second paragraph shown below bullets. */
-  outro?: string;
-  /** Optional third paragraph shown below outro. */
-  outro2?: string;
 }
 
 const STEPS: Step[] = [
   {
     num: "01",
     title: "TAKE THE QUIZ",
-    desc: "5 minutes, 14 questions. You\u2019ll get scored on two axes and mapped to one of four AI archetypes \u2014 plus a preview of your first 5 weeks and two small things to try before Week 1. No email required.",
+    desc: "5 minutes, 14 questions. You’ll get scored on two axes and mapped to one of four AI archetypes — plus a preview of your first 5 weeks and two small things to try before Week 1. No email required.",
     group: "free",
   },
   {
@@ -35,45 +27,38 @@ const STEPS: Step[] = [
   },
   {
     num: "03",
-    title: "KICKOFF + QUICK WINS",
-    desc: "Your first week: a kickoff call where we map AI opportunities to your business and your daily life. You\u2019ll walk away with quick wins you can run immediately. Momentum from day one.",
+    title: "KICKOFF",
+    desc: "First call. We map AI opportunities to your specific business and pick your first installs. You leave with momentum from day one.",
     group: "program",
   },
   {
     num: "04",
-    title: "YOUR WEEKLY SESSIONS",
-    desc: "Every week, you get a session built around one thing: a shift in how you think about AI. Not tool tutorials \u2014 real skills.",
+    title: "PHASE I: 5 FOUNDATION SESSIONS",
+    desc: "Five sessions, one per week, that teach you to brief AI like an operator, not a tinkerer. By the end of month 1, AI is doing real work for you — not just answering questions.",
     group: "program",
-    bulletsLead: "You\u2019ll learn to:",
-    bullets: [
-      "Have real conversations with AI, not just Q&A",
-      "Give it context so answers are about YOU, not generic advice",
-      "Manage conversations as a resource, not throwaway chats",
-      "Shape how AI thinks and responds",
-      "Make AI act on your world, not just talk about it",
-    ],
-    outro:
-      "Each session includes a concrete 20\u201330 minute build \u2014 something you actually create that week. No pure-concept weeks.",
-    outro2:
-      "As you progress, sessions branch into what matters most to you \u2014 personal systems, business operations, or building something new.",
   },
   {
     num: "05",
-    title: "MONTHLY STRATEGY CALL",
-    desc: "30 minutes, one-on-one. Each call covers 3 Things: a Win, a Question, and a Miss \u2014 so we\u2019re always building on what\u2019s working and fixing what\u2019s not. That\u2019s where the real learning happens.",
+    title: "PHASE II: WORKFLOW INSTALLS",
+    desc: "After Phase I, you and Brad pick from the 100+ workflow library each month. New builds added weekly. Each install replaces real work in your business.",
     group: "program",
   },
   {
     num: "06",
-    title: "YOUR GROWING KNOWLEDGE BASE",
-    desc: "Every session archives to a personal Notion database you keep forever. Searchable, referenceable, yours. The 0to1.AI team is in your corner for questions between calls \u2014 and when something big drops in AI, you\u2019ll get a briefing on what changed and how it affects what you\u2019ve already built.",
-    outro: "No finish line. Just a sharper foundation, every week.",
+    title: "MONTHLY STRATEGY CALL",
+    desc: "30 minutes, one-on-one. Each call covers 3 things: a Win, a Question, and a Miss — so we’re always building on what’s working and fixing what’s not.",
     group: "program",
   },
   {
     num: "07",
-    title: "ASK ANYTHING, ANYTIME",
-    desc: "Questions between calls? Send them anytime and get real, thoughtful answers from the 0to1.AI team \u2014 fast, personal, and specific to your situation.",
+    title: "INFRASTRUCTURE LESSONS",
+    desc: "Get running on the operator stack: Claude Code, Cowork, ChatGPT, Codex, GitHub, Vercel, n8n, and more. Lessons added as the tools evolve.",
+    group: "program",
+  },
+  {
+    num: "08",
+    title: "ASYNC ACCESS",
+    desc: "Questions between calls? Send them anytime and get real, thoughtful answers from the 0to1.AI team — fast, personal, and specific to your situation.",
     group: "program",
   },
 ];
@@ -92,46 +77,11 @@ function StepCard({ step, delayIndex }: { step: Step; delayIndex: number }) {
       </p>
       <h3 className="font-mono text-text-primary text-lg font-bold uppercase mb-4 flex items-center gap-2">
         {step.title}
-        <span
-          className="flex-1 h-px bg-border-terminal"
-          aria-hidden="true"
-        />
+        <span className="flex-1 h-px bg-border-terminal" aria-hidden="true" />
       </h3>
       <p className="font-sans text-text-secondary text-base leading-relaxed">
         {step.desc}
       </p>
-      {step.bullets && step.bullets.length > 0 && (
-        <>
-          {step.bulletsLead && (
-            <p className="font-sans text-text-secondary text-base leading-relaxed mt-4">
-              {step.bulletsLead}
-            </p>
-          )}
-          <ul className="mt-2 space-y-1.5" role="list">
-            {step.bullets.map((b) => (
-              <li
-                key={b}
-                className="font-mono text-sm text-text-secondary leading-relaxed"
-              >
-                <span className="text-accent-green" aria-hidden="true">
-                  &rarr;
-                </span>{" "}
-                {b}
-              </li>
-            ))}
-          </ul>
-        </>
-      )}
-      {step.outro && (
-        <p className="font-sans text-text-secondary text-base leading-relaxed mt-4">
-          {step.outro}
-        </p>
-      )}
-      {step.outro2 && (
-        <p className="font-sans text-text-secondary text-base leading-relaxed mt-4">
-          {step.outro2}
-        </p>
-      )}
     </div>
   );
 }
@@ -153,8 +103,9 @@ export default function Process() {
             Here&apos;s the path. Start free. Go deeper if it fits.
           </p>
           <p className="font-sans text-text-secondary text-base md:text-lg leading-relaxed">
-            Each week builds on the last. No finish line &mdash; just a
-            sharper foundation.
+            Phase I installs the foundation. Phase II compounds month over
+            month &mdash; you and Brad pick the next install from a growing
+            library.
           </p>
         </div>
 

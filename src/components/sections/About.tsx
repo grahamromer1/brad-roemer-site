@@ -9,7 +9,7 @@ const META = [
   { key: "education", value: "USC \u00b7 Columbia University" },
   { key: "built", value: "AI agents, automated workflows, a new AI business" },
   { key: "based", value: "North County, San Diego" },
-  { key: "serving", value: "owners, operators, freelancers \u2014 anywhere" },
+  { key: "serving", value: "operators and small businesses installing AI" },
 ];
 
 export default function About() {
@@ -57,8 +57,8 @@ export default function About() {
             personalized program that meets you where you are — week by week,
             tailored to your business and your life. Until AI isn&apos;t
             something you&apos;re &ldquo;meaning to figure out&rdquo; anymore.
-            It&apos;s how you learn. How you find opportunities. How you
-            operate.
+            It&apos;s how you operate. How you find opportunities. How you
+            ship.
           </p>
         </div>
 

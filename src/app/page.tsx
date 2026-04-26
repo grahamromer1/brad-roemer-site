@@ -2,8 +2,12 @@ import Navbar from "@/components/sections/Navbar";
 import Hero from "@/components/sections/Hero";
 import SectionDivider from "@/components/ui/SectionDivider";
 import Problem from "@/components/sections/Problem";
+import WhoThisIsFor from "@/components/sections/WhoThisIsFor";
+import OutcomeLadder from "@/components/sections/OutcomeLadder";
 import Process from "@/components/sections/Process";
-import Services from "@/components/sections/Services";
+import BuildLibrary from "@/components/sections/BuildLibrary";
+import Pricing from "@/components/sections/Pricing";
+import LongTermArc from "@/components/sections/LongTermArc";
 import About from "@/components/sections/About";
 import Proof from "@/components/sections/Proof";
 import Booking from "@/components/sections/Booking";
@@ -19,9 +23,17 @@ export default function Home() {
         <SectionDivider />
         <Problem />
         <SectionDivider />
+        <WhoThisIsFor />
+        <SectionDivider />
+        <OutcomeLadder />
+        <SectionDivider />
         <Process />
         <SectionDivider />
-        <Services />
+        <BuildLibrary />
+        <SectionDivider />
+        <Pricing />
+        <SectionDivider />
+        <LongTermArc />
         <SectionDivider />
         <About />
         <SectionDivider />

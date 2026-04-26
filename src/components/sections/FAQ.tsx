@@ -5,28 +5,40 @@ import { useScrollReveal } from "@/components/hooks/useScrollReveal";
 
 const FAQS: { q: string; a: string }[] = [
   {
-    q: "I\u2019m not technical at all. Is this for me?",
-    a: "That\u2019s exactly who this is for. I\u2019m not technical either \u2014 I\u2019m a real estate developer who taught himself. The whole program is built around translating AI into language and actions that make sense for non-technical people.",
+    q: "What’s the difference between Founding, Monthly, and Pro?",
+    a: "Founding Members get $245/mo locked for life with a 6-month upfront commitment ($1,470 total) — limited to the first 20 clients. Monthly is the standard tier at $295/mo. Pro is $495/mo for operators wanting bi-weekly calls, a concierge channel, quarterly build sprints with Brad, and faster Phase II cadence. All three include the full Phase II library and infrastructure lessons.",
+  },
+  {
+    q: "Why $1,470 upfront for Founding Members?",
+    a: "The upfront commitment ($245/mo × 6 months) is the filter. Founding Members get a lifetime rate that pays back in under 30 months and recognition as an early supporter. The 30-day money-back guarantee covers buyer regret.",
+  },
+  {
+    q: "Do you have a team plan?",
+    a: "Yes — 0to1 Team is built for small businesses with 5-10 person teams at $1,295/mo (or $3,495 paid quarterly). See team plans at /teams for full details. Larger teams can email brad@get0to1.ai for a custom conversation.",
+  },
+  {
+    q: "I’m not technical at all. Is this for me?",
+    a: "That’s exactly who this is for. Brad isn’t technical either — a real estate developer who taught himself. The whole program is built around translating AI into language and actions that make sense for non-technical operators.",
   },
   {
     q: "I already use ChatGPT a bit. Is this too basic?",
-    a: "No. Most people who sign up are past the \u201cwhat is AI\u201d stage. The program meets you where you are \u2014 whether that\u2019s prompting basics or building workflows that run parts of your business.",
+    a: "No. Most clients are past the “what is AI” stage. Phase I teaches you to brief AI like an operator, not a tinkerer. Phase II is personalized to your business — you pick the next workflow build each month based on where time is leaking. The program meets advanced users where they are.",
   },
   {
     q: "How is this different from an online course?",
-    a: "Courses give you information. 0to1 builds a skill. The first 5 weeks follow a structured foundation \u2014 each session shifts how you think about AI, not just what buttons to press. After that, the program branches based on where you want to go. It\u2019s personalized to your business, updated every week, and you have the 0to1.AI team you can ask questions anytime. Nothing here is off-the-shelf.",
+    a: "Courses give you information. 0to1 installs working AI in your business. Phase I is a 5-session foundation — each session shifts how you think about AI, not just what buttons to press. Phase II is the build library you and Brad pick from each month, personalized to your business and your role. Async access to the team between calls. Nothing here is off-the-shelf.",
   },
   {
     q: "How much time does this take per week?",
-    a: "Each session is designed to take 20\u201330 minutes for the core build, plus whatever time you spend experimenting on your own. Most people spend about 1\u20132 hours total per week. The monthly call is 30 minutes. It\u2019s designed to fit around running a business, not replace it.",
+    a: "Each Phase II build is designed to take 20–30 minutes for the install, plus whatever time you spend running it once it’s live. Most clients spend about 1–2 hours total per week. The strategy call is 30 minutes (Monthly) or bi-weekly 30 minutes (Pro). It’s designed to fit around running a business, not replace it.",
   },
   {
-    q: "Can I cancel anytime?",
-    a: "Yes. Month-to-month, cancel anytime. No contracts, no commitments beyond the current month.",
+    q: "Can I skip or pause?",
+    a: "Monthly and Pro tiers: yes — skip-anytime monthly, pause anytime. Founding Members commit to 6 months upfront ($1,470) and have a 30-day full money-back guarantee. After the initial 6 months, Founding Members are also skip-anytime at the locked $245/mo rate.",
   },
   {
     q: "What happens on the intro call?",
-    a: "15 minutes. We look at where you are with AI, what\u2019s most relevant to your situation, and whether the program is a good fit. You\u2019ll leave with a next step either way \u2014 no pitch, no pressure.",
+    a: "15 minutes. We look at where you are with AI, what’s most relevant to your situation, and whether the program is a good fit. You’ll leave with a next step either way — no pitch, no pressure.",
   },
 ];
 

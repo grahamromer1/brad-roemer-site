@@ -33,13 +33,13 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "0to1.AI — AI guidance for real business owners",
+  title: "0to1.AI — The AI operating layer of your business",
   description:
-    "Personal AI guidance for solo operators and freelancers. Learn AI with a guide, not a guru. Weekly curated drops, monthly strategy calls, async support. $295/mo, cancel anytime.",
+    "0to1.AI is a personalized program that builds the AI layer of your business — one working workflow per month. Phase I foundation + 100+ workflow library + monthly strategy call. $295/mo, skip anytime.",
   openGraph: {
-    title: "0to1.AI — Learn AI with a guide, not a guru",
+    title: "0to1.AI — The AI operating layer of your business",
     description:
-      "Personal AI guidance for solo operators and freelancers. Weekly curated drops, monthly strategy calls, async support. Founded by Brad Roemer.",
+      "Personalized AI installed for revenue-generating operators. Phase I foundation + 100+ workflow library + monthly strategy call. Founded by Brad Roemer.",
     url: "https://get0to1.ai",
     siteName: "0to1.AI",
     type: "website",
@@ -47,9 +47,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "0to1.AI — Learn AI with a guide, not a guru",
+    title: "0to1.AI — The AI operating layer of your business",
     description:
-      "Personal AI guidance for solo operators and freelancers. $295/mo, cancel anytime.",
+      "Personalized AI installed for revenue-generating operators. $295/mo, skip anytime.",
   },
   metadataBase: new URL("https://get0to1.ai"),
   alternates: {

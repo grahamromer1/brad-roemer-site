@@ -15,9 +15,10 @@ type NavItem = {
 
 const NAV_ITEMS: NavItem[] = [
   { id: "process", label: "how it works" },
-  { id: "services", label: "plan" },
+  { id: "pricing", label: "pricing" },
   { id: "about", label: "about" },
   { id: "quiz", label: "quiz", href: "/quiz", highlight: "amber" },
+  { id: "teams", label: "teams", href: "/teams" },
   { id: "blog", label: "blog", href: "/blog" },
   { id: "book", label: "book", highlight: "green" },
   { id: "faq", label: "faq" },
@@ -27,7 +28,7 @@ const SECTION_IDS = [
   "hero",
   "problems",
   "process",
-  "services",
+  "pricing",
   "about",
   "proof",
   "book",

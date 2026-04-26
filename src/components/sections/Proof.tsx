@@ -8,8 +8,8 @@ const STATS = [
   { key: "workshops run", value: "5+" },
   { key: "AI agents built", value: "multiple, running live" },
   { key: "AI businesses built", value: "2 (and counting)" },
-  { key: "foundation clients", value: "growing" },
   { key: "technical background", value: "zero" },
+  { key: "phase II library", value: "100+ workflows · weekly drops" },
 ];
 
 export default function Proof() {
@@ -30,7 +30,8 @@ export default function Proof() {
 
         <blockquote className="fade-in-up border-l-2 border-accent-green pl-4 mb-8">
           <p className="font-mono text-xl md:text-2xl text-text-primary font-bold">
-            &ldquo;I built this program for myself first.&rdquo;
+            &ldquo;Operators don&apos;t need more AI content. They need
+            someone whose job it is to install AI in their business.&rdquo;
           </p>
         </blockquote>
 

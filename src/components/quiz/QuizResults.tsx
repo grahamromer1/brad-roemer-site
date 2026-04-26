@@ -346,12 +346,12 @@ export default function QuizResults({
           <p className="font-sans text-text-secondary text-sm md:text-base leading-relaxed">
             You&apos;re a{" "}
             <span className="text-accent-green font-semibold">{typeLabel}</span>.
-            Phase I is the 5-week foundation above. Month-to-month, cancel
-            anytime.
+            Phase I is the 5-week foundation above. Skip-anytime monthly,
+            pause anytime.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 items-stretch sm:items-center justify-center">
             <a
-              href="/#services"
+              href="/#pricing"
               onClick={() =>
                 track(EVENTS.cta_clicked, {
                   cta: "start_phase_1",

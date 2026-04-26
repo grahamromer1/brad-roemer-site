@@ -2,7 +2,7 @@ import { ImageResponse } from "next/og";
 import { loadJetBrainsMono } from "@/lib/og-fonts";
 
 export const alt =
-  "0to1.AI — Personal AI guidance for solo operators. Learn AI with a guide, not a guru.";
+  "0to1.AI — The AI operating layer of your business, installed one workflow at a time.";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -120,15 +120,15 @@ export default async function Image() {
               style={{
                 display: "flex",
                 flexDirection: "column",
-                fontSize: "88px",
+                fontSize: "76px",
                 fontWeight: 700,
                 color: textPrimary,
                 lineHeight: 1.05,
                 marginBottom: "28px",
               }}
             >
-              <span>AI-curious to</span>
-              <span>AI-fluent.</span>
+              <span>The AI operating layer</span>
+              <span>of your business.</span>
             </div>
 
             <div
@@ -138,7 +138,7 @@ export default async function Image() {
                 marginBottom: "40px",
               }}
             >
-              Learn AI with a guide, not a guru.
+              Installed one workflow at a time.
             </div>
 
             <div
@@ -152,7 +152,7 @@ export default async function Image() {
             >
               <span style={{ display: "flex" }}>
                 <span style={{ color: amber, marginRight: "10px" }}>[!]</span>
-                <span>$295/mo · cancel anytime</span>
+                <span>$295/mo · skip anytime</span>
               </span>
               <span style={{ color: green, fontWeight: 700 }}>get0to1.ai</span>
             </div>
