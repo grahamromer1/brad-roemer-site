@@ -26,7 +26,7 @@ const FAQS: { q: string; a: string }[] = [
   },
   {
     q: "How is this different from an online course?",
-    a: "Courses give you information. 0to1 installs working AI in your business. Phase I is a 5-session foundation — each session shifts how you think about AI, not just what buttons to press. Phase II is the build library you and Brad pick from each month, personalized to your business and your role. Async access to the team between calls. Nothing here is off-the-shelf.",
+    a: "Courses give you information. 0to1 installs working AI workflows in your business. Phase I is 5 foundation sessions that teach you to brief AI like an operator. Phase II is a library of 100+ workflow installs (and growing weekly), and we pick your next install based on where your business is leaking time. It’s a membership, not a course — personalized, ongoing, and the relationship deepens as we go.",
   },
   {
     q: "How much time does this take per week?",
@@ -38,7 +38,7 @@ const FAQS: { q: string; a: string }[] = [
   },
   {
     q: "What happens on the intro call?",
-    a: "15 minutes with Brad. We look at where you are with AI, what’s most relevant to your situation, and whether the program is a good fit. You’ll leave with a next step either way — no pitch, no pressure.",
+    a: "15 minutes with Brad. We look at where your business is leaking time, what AI workflow would install fastest, and whether the program is a fit. You’ll leave with a concrete next step either way — no pitch, no pressure.",
   },
 ];
 

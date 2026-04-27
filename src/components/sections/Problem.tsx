@@ -39,7 +39,7 @@ export default function Problem() {
       <div className="max-w-3xl mx-auto">
         <TerminalPrompt
           command="cat problems.md"
-          heading="The gap between AI access and AI installed"
+          heading="Why installing AI on your own is broken"
           subheading="Sound familiar?"
         />
 

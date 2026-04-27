@@ -6,10 +6,11 @@ import { useScrollReveal } from "@/components/hooks/useScrollReveal";
 
 const STATS = [
   { key: "workshops run", value: "5+" },
-  { key: "AI agents built", value: "multiple, running live" },
+  { key: "workflow installs shipped", value: "17 (100+ in pipeline)" },
+  { key: "AI agents built and running live", value: "multiple" },
   { key: "AI businesses built", value: "2 (and counting)" },
+  { key: "founding cohort opens", value: "May 1, 2026" },
   { key: "technical background", value: "zero" },
-  { key: "phase II library", value: "100+ workflows · weekly drops" },
 ];
 
 export default function Proof() {
@@ -45,10 +46,11 @@ export default function Proof() {
             in fast.
           </p>
           <p>
-            The long-term goal is bigger than coaching — it&apos;s building a
-            community of people like you, learning together, sharing what
-            works, and pushing each other forward. You&apos;re not just
-            signing up for a program. You&apos;re joining something early.
+            The long-term goal is bigger than coaching &mdash; it&apos;s a
+            community of operators installing AI together, sharing what
+            works, pushing each other forward. You&apos;re not signing up
+            for a course. You&apos;re joining a membership at the founding
+            stage.
           </p>
         </div>
 
@@ -73,7 +75,7 @@ export default function Proof() {
         </div>
 
         <p className="fade-in-up font-mono text-xs text-text-dim mt-6 text-center">
-          // client stories coming soon — this section grows as we do.
+          // first founding-cohort case studies live by July 2026.
         </p>
       </div>
     </section>

@@ -7,15 +7,17 @@ import { useScrollReveal } from "@/components/hooks/useScrollReveal";
 import { EVENTS, track } from "@/lib/analytics";
 
 interface Tier {
-  id: "founding" | "monthly" | "pro";
+  id: "founding" | "monthly" | "pro" | "team";
   title: string;
   badge: string;
-  badgeTone: "cyan" | "amber" | "green";
+  badgeTone: "cyan" | "amber" | "green" | "neutral";
   price: string;
+  priceUnit: string;
   subline: string;
   fineLine: string;
   bullets: string[];
   ctaLabel: string;
+  ctaHref: string;
   ctaEvent: string;
   /** Visually emphasized card (border + glow). */
   emphasized?: "cyan" | "green";
@@ -24,39 +26,43 @@ interface Tier {
 const TIERS: Tier[] = [
   {
     id: "founding",
-    title: "Founding Member",
-    badge: "9 spots remain",
+    title: "Founding",
+    badge: "first 10 only",
     badgeTone: "amber",
-    price: "$245 / month",
-    subline: "Locked for life · 6 months paid in full ($1,470)",
-    fineLine: "// 6-month commitment",
+    price: "$245",
+    priceUnit: "/ mo lifetime",
+    subline: "$1,470 paid in full · rate locked forever",
+    fineLine: "// 9 spots remaining · cohort opens May 1",
     bullets: [
-      "Lifetime $245/mo rate after the initial 6 months",
-      "Everything in the Monthly tier",
+      "Everything in Monthly",
+      "Lifetime $245/mo (vs $295)",
       "Up to 4 Phase II builds per week (vs 2 in Monthly)",
-      "Founding-member status and recognition",
-      "First access to new builds and infrastructure lessons (alongside Pro members)",
+      "Founding-cohort community access",
+      "Priority on workflow requests",
     ],
-    ctaLabel: "Become a Founding Member",
-    ctaEvent: "founding_signup",
+    ctaLabel: "Claim a Founding Spot →",
+    ctaHref: "#book",
+    ctaEvent: "claim_founding",
   },
   {
     id: "monthly",
     title: "Monthly",
     badge: "default",
     badgeTone: "cyan",
-    price: "$295 / month",
+    price: "$295",
+    priceUnit: "/ month",
     subline: "The standard tier — month to month",
     fineLine: "// pause anytime",
     bullets: [
       "Phase I: 5 foundation sessions",
-      "Phase II: 2 workflow and infrastructure builds per week",
+      "Phase II: 2 workflow & infrastructure builds per week",
       "Monthly 30-min strategy call with Brad",
       "Async 0to1.AI team access",
       "100+ workflow library + new builds added weekly",
       "Personal Notion knowledge base",
     ],
     ctaLabel: "Start Monthly",
+    ctaHref: "#book",
     ctaEvent: "monthly_signup",
     emphasized: "cyan",
   },
@@ -65,7 +71,8 @@ const TIERS: Tier[] = [
     title: "Pro",
     badge: "recommended",
     badgeTone: "green",
-    price: "$495 / month",
+    price: "$495",
+    priceUnit: "/ month",
     subline: "For operators wanting heavier cadence",
     fineLine: "// pause anytime",
     bullets: [
@@ -73,11 +80,33 @@ const TIERS: Tier[] = [
       "Bi-weekly 1:1 strategy calls (vs monthly)",
       "Concierge Discord channel",
       "Quarterly Build Sprint — 60 min live build with Brad",
-      "First access to new builds and infrastructure lessons (1 week before Monthly)",
+      "First access to new builds (1 week before Monthly)",
       "Up to 4 Phase II builds per week (vs 2 in Monthly)",
     ],
     ctaLabel: "Start Pro",
+    ctaHref: "#book",
     ctaEvent: "pro_signup",
+  },
+  {
+    id: "team",
+    title: "Team",
+    badge: "5–10 seats",
+    badgeTone: "neutral",
+    price: "$1,295",
+    priceUnit: "/ month",
+    subline: "Or $3,495/quarter — save $390",
+    fineLine: "// 5-seat minimum · pause anytime",
+    bullets: [
+      "Up to 10 team seats",
+      "Each member gets their own Phase I + Phase II",
+      "Monthly team strategy call",
+      "Quarterly Team Build Sprint",
+      "Async support for the whole team",
+      "10+ employees? Inquire.",
+    ],
+    ctaLabel: "See Team Plans →",
+    ctaHref: "/teams",
+    ctaEvent: "see_team_plans",
   },
 ];
 
@@ -88,8 +117,10 @@ function badgeClasses(tone: Tier["badgeTone"]) {
     case "green":
       return "border-accent-green/50 bg-accent-green/10 text-accent-green";
     case "cyan":
-    default:
       return "border-accent-cyan/40 bg-accent-cyan/5 text-accent-cyan";
+    case "neutral":
+    default:
+      return "border-border-terminal bg-bg-surface text-text-dim";
   }
 }
 
@@ -107,7 +138,7 @@ function TierCard({ tier, delayIndex }: { tier: Tier; delayIndex: number }) {
   return (
     <div
       className={`fade-in-up rounded-lg border ${emphasisClasses(tier)} bg-bg-surface overflow-hidden flex flex-col`}
-      style={{ transitionDelay: `${delayIndex * 100}ms` }}
+      style={{ transitionDelay: `${delayIndex * 75}ms` }}
     >
       {/* terminal chrome */}
       <div className="flex items-center gap-2 px-4 py-3 border-b border-border-terminal">
@@ -130,22 +161,26 @@ function TierCard({ tier, delayIndex }: { tier: Tier; delayIndex: number }) {
 
       <div className="p-6 flex-1 flex flex-col">
         <div className="flex flex-wrap items-start justify-between gap-2 mb-1">
-          <h3 className="font-mono text-text-primary text-xl font-bold">
+          <h3 className="font-mono text-text-primary text-lg font-bold">
             {tier.title}
           </h3>
           <span
             className={`font-mono text-[10px] uppercase tracking-wider px-2 py-1 rounded border ${badgeClasses(tier.badgeTone)}`}
           >
-            [{tier.badge}]
+            {tier.badge}
           </span>
         </div>
         <div className="h-px bg-border-terminal my-4" aria-hidden="true" />
 
         <div className="mb-4">
-          <p className="font-mono text-accent-green font-bold text-2xl md:text-3xl">
+          <span className="font-mono text-accent-green font-bold text-2xl md:text-3xl">
             {tier.price}
-          </p>
-          <p className="font-mono text-text-secondary text-sm mt-1">
+          </span>
+          <span className="font-mono text-text-dim text-sm">
+            {" "}
+            {tier.priceUnit}
+          </span>
+          <p className="font-mono text-text-secondary text-xs mt-1">
             {tier.subline}
           </p>
           <p className="font-mono text-xs text-text-dim mt-2">
@@ -153,10 +188,7 @@ function TierCard({ tier, delayIndex }: { tier: Tier; delayIndex: number }) {
           </p>
         </div>
 
-        <p className="font-mono text-xs text-text-secondary uppercase tracking-wider mb-3">
-          // what&apos;s included:
-        </p>
-        <ul className="space-y-2.5 mb-6 flex-1" role="list">
+        <ul className="space-y-2 mb-6 flex-1" role="list">
           {tier.bullets.map((b) => (
             <li
               key={b}
@@ -175,7 +207,7 @@ function TierCard({ tier, delayIndex }: { tier: Tier; delayIndex: number }) {
 
         {tier.emphasized === "cyan" ? (
           <a
-            href="#book"
+            href={tier.ctaHref}
             onClick={() =>
               track(EVENTS.cta_clicked, {
                 cta: tier.ctaEvent,
@@ -188,7 +220,7 @@ function TierCard({ tier, delayIndex }: { tier: Tier; delayIndex: number }) {
           </a>
         ) : (
           <Button
-            href="#book"
+            href={tier.ctaHref}
             variant="secondary"
             onClick={() =>
               track(EVENTS.cta_clicked, {
@@ -223,67 +255,18 @@ export default function Pricing() {
       <div className="max-w-6xl mx-auto">
         <TerminalPrompt
           command="cat pricing.md"
-          heading="Pricing — three tiers, one product"
+          heading="Pricing — four tiers, one product"
           subheading="What you get"
         />
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 items-stretch mb-20 md:mb-24">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch mb-16 md:mb-20">
           {TIERS.map((tier, i) => (
             <TierCard key={tier.id} tier={tier} delayIndex={i} />
           ))}
         </div>
 
-        {/* Team callout */}
-        <div
-          className="fade-in-up mb-16 md:mb-20"
-          style={{ transitionDelay: "300ms" }}
-        >
-          <TerminalWindow filename="teams.md">
-            <div className="flex flex-wrap items-start justify-between gap-3 mb-1">
-              <p className="font-mono text-text-primary text-base md:text-lg font-bold">
-                Running a Team or Small Business
-              </p>
-              <a
-                href="/teams"
-                onClick={() =>
-                  track(EVENTS.cta_clicked, {
-                    cta: "see_team_plans",
-                    location: "pricing_badge",
-                  })
-                }
-                className="font-mono text-[10px] uppercase tracking-wider px-2 py-1 rounded border border-accent-cyan/40 bg-accent-cyan/5 text-accent-cyan transition-colors hover:bg-accent-cyan/15 hover:border-accent-cyan"
-              >
-                [teams]
-              </a>
-            </div>
-            <p className="font-mono text-xs text-text-dim mb-4">
-              // built for small organizations leveling up together
-            </p>
-            <div className="h-px bg-border-terminal mb-4" aria-hidden="true" />
-            <p className="font-sans text-text-primary text-base md:text-lg leading-relaxed mb-2">
-              <span className="font-bold">0to1 Team</span> &mdash; for small
-              businesses with 5–10 person teams. Phase I + Phase II library +
-              infrastructure lessons for everyone, monthly team strategy
-              calls, quarterly Team Build Sprints. Starts at{" "}
-              <span className="text-accent-green font-mono">$1,295/mo</span>.
-            </p>
-            <a
-              href="/teams"
-              className="font-mono text-sm text-accent-green hover:underline inline-flex items-center gap-1 mt-2"
-              onClick={() =>
-                track(EVENTS.cta_clicked, {
-                  cta: "see_team_plans",
-                  location: "pricing",
-                })
-              }
-            >
-              See team plans <span aria-hidden="true">&rarr;</span>
-            </a>
-          </TerminalWindow>
-        </div>
-
         {/* Add-ons */}
-        <div className="fade-in-up" style={{ transitionDelay: "400ms" }}>
+        <div className="fade-in-up max-w-2xl mx-auto" style={{ transitionDelay: "400ms" }}>
           <TerminalWindow filename="add-ons.md">
             <div className="flex flex-wrap items-start justify-between gap-3 mb-1">
               <p className="font-mono text-text-primary text-base md:text-lg font-bold">
@@ -294,7 +277,7 @@ export default function Pricing() {
               </span>
             </div>
             <p className="font-mono text-xs text-text-dim mb-4">
-              // available to active clients
+              // available to active members
             </p>
             <div className="h-px bg-border-terminal mb-4" aria-hidden="true" />
             <ul className="space-y-3" role="list">
@@ -315,6 +298,10 @@ export default function Pricing() {
           </TerminalWindow>
         </div>
 
+        <p className="font-mono text-text-dim text-sm text-center mt-10">
+          // not sure which tier fits? the intro call is free &mdash; 15
+          minutes, no pitch, leave with a next step either way.
+        </p>
       </div>
     </section>
   );

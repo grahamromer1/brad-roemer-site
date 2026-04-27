@@ -19,32 +19,39 @@ export default function Hero() {
           <div className="p-6 sm:p-10 md:p-14">
             <h1 className="font-mono text-4xl sm:text-5xl md:text-6xl font-bold text-text-primary mb-2">
               <span className="block">AI-curious to</span>
-              <span className="block">AI-fluent.</span>
+              <span className="block">AI-operator.</span>
             </h1>
 
             <p className="font-mono text-accent-green text-lg md:text-xl mb-8">
               <span className="typing-effect inline-block">
-                Learn AI with a guide, not a guru.
+                We don&apos;t teach AI &mdash; we install it in your business with you.
               </span>
               <BlinkingCursor />
             </p>
 
             <div className="mb-10">
               <p className="font-sans text-lg sm:text-xl md:text-2xl text-text-primary leading-relaxed mb-5">
-                You&apos;ve decided AI is no longer optional for your
-                business. You just need someone to teach you to actually
-                install it.
+                For the operator who&apos;s decided AI is no longer optional
+                and just needs someone to actually do it with them.
               </p>
               <p className="font-sans text-text-secondary text-base md:text-lg leading-relaxed">
-                0to1.AI is a personalized program that builds the AI layer
-                of your business and your life. You&apos;ll build a real
-                foundation and the working knowledge to ship workflows,
-                agents, and solutions &mdash; with a coach and a system
-                that delivers.
+                Foundation training plus a growing library of 100+ workflow
+                installs. Personalized to your business. A membership, not a
+                course.
               </p>
               <p className="font-sans text-text-secondary text-sm md:text-base mt-4 leading-relaxed">
                 Built by a self-taught operator who figured it out the hard way.
               </p>
+            </div>
+
+            <div className="mb-5 inline-flex items-center gap-2 rounded border border-accent-amber/40 bg-accent-amber/5 px-3 py-1.5">
+              <span
+                className="w-2 h-2 rounded-full bg-accent-amber animate-pulse"
+                aria-hidden="true"
+              />
+              <span className="font-mono text-xs md:text-sm text-accent-amber">
+                Founding cohort opens May 1 &mdash; 9 spots remaining
+              </span>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-3">
