@@ -24,7 +24,7 @@ export default function Hero() {
 
             <p className="font-mono text-accent-green text-lg md:text-xl mb-8">
               <span className="typing-effect inline-block">
-                We don&apos;t teach AI &mdash; we install it in your business with you.
+                We don&apos;t teach AI &mdash; we help you install it.
               </span>
               <BlinkingCursor />
             </p>
@@ -42,16 +42,6 @@ export default function Hero() {
               <p className="font-sans text-text-secondary text-sm md:text-base mt-4 leading-relaxed">
                 Built by a self-taught operator who figured it out the hard way.
               </p>
-            </div>
-
-            <div className="mb-5 inline-flex items-center gap-2 rounded border border-accent-amber/40 bg-accent-amber/5 px-3 py-1.5">
-              <span
-                className="w-2 h-2 rounded-full bg-accent-amber animate-pulse"
-                aria-hidden="true"
-              />
-              <span className="font-mono text-xs md:text-sm text-accent-amber">
-                Founding cohort opens May 1 &mdash; 9 spots remaining
-              </span>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-3">

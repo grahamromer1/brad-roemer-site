@@ -55,6 +55,16 @@ export default function WhoThisIsFor() {
             // probably not for: hobbyists, the AI-curious without a
             business, engineers building their own stack.
           </p>
+
+          <div className="mt-8 inline-flex items-center gap-2 rounded border border-accent-amber/40 bg-accent-amber/5 px-3 py-1.5">
+            <span
+              className="w-2 h-2 rounded-full bg-accent-amber animate-pulse"
+              aria-hidden="true"
+            />
+            <span className="font-mono text-xs md:text-sm text-accent-amber">
+              Founding cohort opens May 1 &mdash; 9 spots remaining
+            </span>
+          </div>
         </div>
       </div>
     </section>

@@ -96,7 +96,7 @@ html {
     white-space: nowrap;
     border-right: none;
     width: 0;
-    animation: typing 2.6s steps(58) 0.5s forwards;
+    animation: typing 2s steps(44) 0.5s forwards;
   }
 }
 @media (prefers-reduced-motion: reduce) {
