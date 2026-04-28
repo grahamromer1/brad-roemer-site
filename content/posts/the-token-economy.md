@@ -1,6 +1,6 @@
 ---
 title: "The Token Economy"
-date: 2026-04-27
+date: 2026-04-24
 excerpt: "Token management is part of the job now. Why the cheap era is ending — and why your value as a knowledge worker is starting to correlate with how much AI you can put to work."
 slug: the-token-economy
 ---
