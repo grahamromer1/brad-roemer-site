@@ -16,7 +16,7 @@ const STEPS: Step[] = [
   {
     num: "01",
     title: "TAKE THE QUIZ",
-    desc: "5 minutes, 14 questions. You’ll get scored on two axes and mapped to one of four AI archetypes — plus a preview of your first 5 weeks and two small things to try before Week 1. No email required.",
+    desc: "5 minutes, 15 questions. You’ll get scored on two axes and mapped to one of four AI archetypes — plus a preview of your first 5 weeks and two small things to try before Week 1. No email required.",
     group: "free",
   },
   {

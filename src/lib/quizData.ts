@@ -3,6 +3,13 @@
 export interface QuizOption {
   label: string;
   value: string;
+  /**
+   * Mutually-exclusive option (e.g. "all of the above"). On a multi-select
+   * question, picking it clears any other selection and auto-advances. On a
+   * single-select question this flag has no effect (the option already
+   * advances on click).
+   */
+  exclusive?: boolean;
 }
 
 export interface QuizQuestion {
@@ -214,15 +221,11 @@ export const QUIZ_QUESTIONS: QuizQuestion[] = [
     multiSelect: false,
     openFieldLabel: "Something else on your mind?",
     options: [
-      { label: "Save me time on repetitive tasks", value: "save_time" },
-      { label: "Help me get more organized", value: "get_organized" },
-      { label: "Help me find and close more clients", value: "find_clients" },
-      { label: "Help me create content faster", value: "content_faster" },
-      { label: "Help me look more professional and polished", value: "look_professional" },
-      { label: "Help me build systems so I'm not the bottleneck", value: "build_systems" },
-      { label: "Free up time for family, friends, or personal life", value: "free_time_personal" },
-      { label: "Open up new business opportunities or revenue streams", value: "new_opportunities" },
-      { label: "Let me focus on my highest-and-best-use in the business", value: "highest_best_use" },
+      { label: "Save serious time on repetitive work", value: "save_time" },
+      { label: "Grow the business — more clients, content, and revenue", value: "new_opportunities" },
+      { label: "Build systems so I'm not the bottleneck", value: "build_systems" },
+      { label: "Free up real life — family, health, personal time", value: "free_time_personal" },
+      { label: "Focus on my highest-and-best-use in the business", value: "highest_best_use" },
       { label: "I honestly don't know yet — that's why I'm here", value: "dont_know" },
     ],
   },
@@ -234,18 +237,35 @@ export const QUIZ_QUESTIONS: QuizQuestion[] = [
     maxSelections: 3,
     openFieldLabel: "Bigger vision? Share it.",
     options: [
-      { label: "Reclaim serious time — multiple hours every week, permanently", value: "reclaim_time_lt" },
+      { label: "Reclaim hours every week and step back from day-to-day ops", value: "reclaim_time_lt" },
+      { label: "Grow revenue and capacity without growing headcount", value: "grow_revenue_lt" },
       { label: "Systematize the business so it runs without me in every detail", value: "systematize_lt" },
-      { label: "Grow revenue meaningfully without growing headcount", value: "grow_revenue_lt" },
-      { label: "Launch a new product, service, or revenue stream", value: "new_product_lt" },
-      { label: "Scale client capacity 2–3x without burning out", value: "scale_capacity_lt" },
-      { label: "Build a real sales & marketing engine that runs itself", value: "sales_engine_lt" },
-      { label: "Turn my expertise into content, courses, or IP at scale", value: "expertise_ip_lt" },
-      { label: "Step back from day-to-day ops and focus on strategy", value: "step_back_lt" },
-      { label: "Dramatically improve client experience and retention", value: "client_experience_lt" },
-      { label: "Position the business to sell or raise in the future", value: "exit_ready_lt" },
-      { label: "Spend more time on family, health, or personal projects", value: "personal_life_lt" },
-      { label: "Still figuring out the long game", value: "figuring_out_lt" },
+      { label: "Launch new products, services, or scale my expertise into IP", value: "new_product_lt" },
+      { label: "Spend more time on family, health, and personal life", value: "personal_life_lt" },
+      { label: "All of the above", value: "all_above_lt", exclusive: true },
+    ],
+  },
+  {
+    id: "ai_style",
+    section: "What's Next",
+    question: "When it comes to AI in your business, which approach fits you best?",
+    multiSelect: false,
+    options: [
+      {
+        label:
+          "DIY — I want to learn it myself. Hand me the tools and I'll figure it out.",
+        value: "diy",
+      },
+      {
+        label:
+          "DWY — I want help. Walk with me — guidance, structure, and accountability while I do the work.",
+        value: "dwy",
+      },
+      {
+        label:
+          "DFY — Just do it for me. I want results without becoming the expert.",
+        value: "dfy",
+      },
     ],
   },
 ];

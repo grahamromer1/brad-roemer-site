@@ -132,16 +132,37 @@ export default function QuizFlow() {
     (value: string) => {
       if (!question) return;
 
+      const picked = question.options.find((o) => o.value === value);
+
       if (question.multiSelect) {
-        const current = selectedValues;
+        // Exclusive option (e.g. "all of the above") on a multi-select:
+        // clears any other selection and auto-advances like a single-select.
+        if (picked?.exclusive) {
+          updateAnswer(question.id, [value]);
+          setTimeout(() => {
+            goNext([value]);
+          }, 400);
+          return;
+        }
+
+        // Picking a normal option clears any previously-set exclusive
+        // option, then proceeds with the regular multi-select toggle.
+        const exclusiveValues = new Set(
+          question.options.filter((o) => o.exclusive).map((o) => o.value)
+        );
+        const cleaned = selectedValues.filter((v) => !exclusiveValues.has(v));
+
         let next: string[];
-        if (current.includes(value)) {
-          next = current.filter((v) => v !== value);
+        if (cleaned.includes(value)) {
+          next = cleaned.filter((v) => v !== value);
         } else {
-          if (question.maxSelections && current.length >= question.maxSelections) {
+          if (
+            question.maxSelections &&
+            cleaned.length >= question.maxSelections
+          ) {
             return;
           }
-          next = [...current, value];
+          next = [...cleaned, value];
         }
         updateAnswer(question.id, next);
       } else {
@@ -271,7 +292,7 @@ export default function QuizFlow() {
                 Where do you stand with AI?
               </h1>
               <p className="font-mono text-xs md:text-sm text-text-dim">
-                5 minutes. 14 questions. No email required.
+                5 minutes. 15 questions. No email required.
               </p>
               <p className="font-sans text-text-secondary text-sm md:text-base leading-relaxed">
                 You&apos;ll get a personalized snapshot of where you are with
